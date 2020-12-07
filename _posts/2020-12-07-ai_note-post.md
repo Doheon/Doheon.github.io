@@ -10,7 +10,7 @@ categories: 노트
 
 ## numpy
 
-### 실행
+### Import
 import numpy as np  
 
 ### 함수
