@@ -14,12 +14,15 @@ categories: 노트
 import numpy as np  
 
 ### 함수
-- np.array(list)  
+- **np.array(list)** 
 list를 array로 변환  
-`arr = np.array(list)`  
 
-- arr.shape  
+- **arr.shape**  
 array의 모양(차원)을 알려줌  
+
+- **np.matmul(A,B)**  
+A, B의 행렬곱을 반환  
+둘다 array라면 A @ B 로도 표현 가능  
 
 
 
