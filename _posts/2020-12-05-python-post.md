@@ -1,5 +1,5 @@
 ---
-title: "파이썬 정리"
+title: "파이썬 "
 toc: true
 toc_sticky: true
 date: 2020-12-05
