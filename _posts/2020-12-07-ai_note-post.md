@@ -45,6 +45,50 @@ jupyter notebook
 - b: 현재 cell 아래에 새로운 cell 추가
 
 
+## 통계
+
+**numpy**  
+- np.var(list, ddof=1)
+- np.std(list, ddof=1)  
+ddof=1은 표본이라는 뜻  
+- np.max()
+- np.min()
+- np.quantile(list, 0.25)
+
+
+**scipy**  
+import scipy  
+import scipy.stats  
+- scipy.stats.tvar(a)
+- scipy.stats.zscore(a, ddos=1)  
+ddos는 표본일 때
+
+
+**statistics**  
+import statistics  
+
+- statistics.mean()
+- statistics.variance()
+- statistics.pvariance()
+- statistics.stdev()
+- statistics.pstdev()  
+p가 붙어있는게 모분산, 모표준편차
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
