@@ -10,11 +10,10 @@ categories: 노트
 
 ## numpy
 
-### Import
 import numpy as np  
 
 ### 함수
-- **np.array(list)** 
+- **np.array(list)**  
 list를 array로 변환  
 
 - **arr.shape**  
@@ -30,7 +29,6 @@ A, B의 행렬곱을 반환
 
 ## Jupyter NoteBook
 
-### 실행
 terminal  
 jupyter notebook  
 
