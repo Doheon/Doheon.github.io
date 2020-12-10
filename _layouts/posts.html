@@ -3,7 +3,6 @@ layout: archive
 ---
 
 {{ content }}
-
 <ul class="taxonomy__index">
   {% assign postsInYear = site.posts | where_exp: "item", "item.hidden != true" | group_by_exp: 'post', 'post.date | date: "%Y"' %}
   {% for year in postsInYear %}
@@ -14,7 +13,6 @@ layout: archive
     </li>
   {% endfor %}
 </ul>
-
 {% assign entries_layout = page.entries_layout | default: 'list' %}
 {% assign postsByYear = site.posts | where_exp: "item", "item.hidden != true" | group_by_exp: 'post', 'post.date | date: "%Y"' %}
 {% for year in postsByYear %}
@@ -24,13 +22,6 @@ layout: archive
       {% for post in year.items %}
         {% include archive-single.html type=entries_layout %}
       {% endfor %}
-    </div>
-    <div style="text-align: center;">
-      <a href="http://hits.dwyl.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}"
-        target="_blank">
-        <img
-          src="http://hits.dwyl.com/{{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}.svg" />
-      </a>
     </div>
     <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
   </section>
