@@ -52,12 +52,16 @@ jupyter notebook
 ## 통계
 
 **numpy**  
-- np.var(list, ddof=1)
-- np.std(list, ddof=1)  
+np.var(list, ddof=1)  
+np.std(list, ddof=1)   
 ddof=1은 표본이라는 뜻  
-- np.max()
-- np.min()
-- np.quantile(list, 0.25)
+
+np.max()  
+np.min()  
+np.quantile(list, 0.25)  
+
+np.random.exponetial(scale = 3, size = n) 지수분포에서 랜덤추출  
+np.random.rand(n): 0~1사이의 값 n개 
 
 
 **scipy**  
@@ -84,6 +88,8 @@ stats.poisson.cdf(2, mu=3)
 지수분포  
 lambda = 3
 stats.expon.cdf(0.5, scale = 1/lambda)  
+
+scipy.stats.norm.ppf(1-$\alpha$/2) : z값을 구해준다. 
 
 **statistics**  
 import statistics  
