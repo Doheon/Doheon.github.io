@@ -4,6 +4,7 @@ toc: true
 toc_sticky: true
 date: 2020-12-07
 categories: 노트
+use_math: true
 ---
 
 **필요해 보이는 것들 계속 정리**  
