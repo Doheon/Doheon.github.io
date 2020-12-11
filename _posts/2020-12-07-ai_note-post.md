@@ -14,15 +14,18 @@ use_math: true
 import numpy as np  
 
 ### 함수
-- **np.array(list)**  
+**np.array(list)**  
 list를 array로 변환  
+<p>&nbsp;</p>  
 
-- **arr.shape**  
+**arr.shape**  
 array의 모양(차원)을 알려줌  
+<p>&nbsp;</p>  
 
-- **np.matmul(A,B)**  
+**np.matmul(A,B)**  
 A, B의 행렬곱을 반환  
 둘다 array라면 A @ B 로도 표현 가능  
+<p>&nbsp;</p>  
 
 
 
@@ -85,12 +88,12 @@ stats.expon.cdf(0.5, scale = 1/lambda)
 **statistics**  
 import statistics  
 
-- statistics.mean()
-- statistics.variance()
-- statistics.pvariance()
-- statistics.stdev()
-- statistics.pstdev()  
-p가 붙어있는게 모분산, 모표준편차
+statistics.mean()  
+statistics.variance()  
+statistics.pvariance()  
+statistics.stdev()  
+statistics.pstdev()   
+p가 붙어있는게 모분산, 모표준편차  
 
 
 
