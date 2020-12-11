@@ -63,6 +63,23 @@ import scipy.stats
 - scipy.stats.zscore(a, ddos=1)  
 ddos는 표본일 때
 
+from scipy import stats
+
+이항분포  
+1 - stats.binom.cdf(0, n=3, p=0.2)  
+stats.binom.stats(n=3, p=0.2): 평균, 분산 출력  
+
+정규분포  
+stats.norm.cdf(4, loc=4, scale=3)  
+stats.norm.cdf(7, loc=4, scale=3) - stats.norm.cdf(4, loc=4, scale=3)  
+loc = $\mu$, scale = $\sigma$  
+
+포아송분포  
+stats.poisson.cdf(2, mu=3)  
+
+지수분포  
+lambda = 3
+stats.expon.cdf(0.5, scale = 1/lambda)  
 
 **statistics**  
 import statistics  
