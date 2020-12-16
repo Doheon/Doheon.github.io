@@ -2,7 +2,7 @@
 title: "파이썬 노트"
 toc: true
 toc_sticky: true
-date: 2020-12-05
+date: 2020-11-29
 categories: 노트
 ---
 

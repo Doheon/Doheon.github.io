@@ -2,7 +2,7 @@
 title: "AI 노트"
 toc: true
 toc_sticky: true
-date: 2020-12-07
+date: 2020-11-29
 categories: 노트
 use_math: true
 ---
