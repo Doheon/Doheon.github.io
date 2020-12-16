@@ -10,7 +10,7 @@ use_math: true
 **필요해 보이는 것들 계속 정리**  
 
 ## numpy
-
+느린 python대신 c로 미리 구현을 해서 빠른 속도를 가지게한 것
 import numpy as np  
 
 ### 함수
@@ -24,8 +24,183 @@ array의 모양(차원)을 알려줌
 
 **np.matmul(A,B)**  
 A, B의 행렬곱을 반환  
+동일 표현 np.dot(A,B), A.Matmul(B), A.dot(B)  
 둘다 array라면 A @ B 로도 표현 가능  
 <p>&nbsp;</p>  
+
+**np.zeros(dim)**  
+dim의 영행렬 반환  
+np.ones(dim)도 똑같이 됨  
+<p>&nbsp;</p>  
+
+**np.diag((a,b,c))**  
+diagonal matrix 생성  
+<p>&nbsp;</p>  
+
+**np.eye(n, dtype = float)**  
+nxn float타입의 항등행렬 생성  
+dtype생략시 float 위에거들도 다 dtype 사용가능  
+<p>&nbsp;</p>  
+
+**np.trace(A)**  
+main diagonal의 합 반환  
+A가 array면 A.trace()로도 가능  
+<p>&nbsp;</p>  
+
+**np.linalg.det(A)**
+determinant반환  
+<p>&nbsp;</p>  
+
+**np.linalg.inv(A)**  
+역행렬 반환  
+<p>&nbsp;</p>  
+
+**np.linalg.eig(A)**  
+고유값과 고유벡터를 튜플로 묶어서 반환  
+<p>&nbsp;</p>  
+
+
+
+
+### 지식  
+
+**numpy에서는 벡터를 쓸때 거의 행벡터를 사용하며 열벡터가 들어갈 자리에 행벡터를 사용해도  
+행렬 모양을 보고 알아서 열벡터로 바꿔서 연산을 해준다.**  
+
+**list[i][j] = array[i,j]**  
+array[:][a:b]  
+
+**Broadcasting**  
+차원이 다른 행렬끼리 연산해도 연사이 가능하도록 변환이 되면 복사한다음에 연산된다  
+
+## pandas  
+table의 역할을 대체하기 위해 많이 사용  
+import pandas as pd  
+
+### 함수  
+
+**s = pd.Series(list)**  
+list를 series로 변환  
+<p>&nbsp;</p>  
+
+**t = pd.Series(dic)**  
+dictionary를 series로 변환  
+<p>&nbsp;</p>  
+
+**s[s>s.median()]**  
+특정조건을 만족하는 원소만 추출  
+<p>&nbsp;</p>  
+
+**s[[3,1,4]]**  
+해당 인덱스만 추출  
+<p>&nbsp;</p>  
+
+**s.dtype**  
+데이터 타입 반환  
+<p>&nbsp;</p>  
+
+**dic과 사용법이 동일**  
+t[key]   
+t[newkey] = nval  
+t.get(key, 0)  
+<p>&nbsp;</p>  
+
+**name property**  
+s = pd.Series(np.random.randn(5), name = "random_nums")  
+<p>&nbsp;</p>  
+
+
+**df = pd.DataFrame(dic)**  
+dictionary를 dataframe으로 변환  
+df = pd.DataFrame(d, index = list}  
+df.dtypes  
+<p>&nbsp;</p>  
+
+**covid = pd.read_csv(path)**  
+csv파일을 dataframedmfh 변환  
+<p>&nbsp;</p>  
+
+**covid.head(n)**  
+처음 n개의 데이터 참조  
+
+**covid.tail(n)**  
+마지막 n개의 데이터 참조  
+<p>&nbsp;</p>  
+
+**df[‘column_name’] or df.column_name**  
+해당 열 접근, 후자의 접근방법은 띄어쓰기 같은걸 인식을 못함  
+<p>&nbsp;</p>  
+
+**covid[covid[‘New cases’] > 100]**  
+해당 조건을 만족하 row만 추출  
+<p>&nbsp;</p>  
+
+**covid[‘WHO Region’].unique()**  
+데이터들을 중복 없이 출력, 범주의 종류를 확인  
+<p>&nbsp;</p>  
+
+**df.loc[row_name]**  
+해당 row 추출
+df.loc[:, col_name]: 해당 col 추출  
+
+**df.loc[row_name, col_name]**  
+해당 row, col에 해당하는 값 반환  
+df.loc[row_name][col_name] 해도됨  
+
+**df.iloc[rowidx, colidx]**  
+numpy와 완전히 동일 slicing가능  
+<p>&nbsp;</p>  
+
+**groupby**  
+covid_by_region = covid[‘Confirmed’].groupby(by=covid[“WHO Region”])  
+
+covid_by_region.sum()  
+지역별 데이터의 합을 출력해 준다.  
+
+covid_by_region.mean()  
+데이터들의 평균을 출력해 준다.  
+
+
+
+
+
+## git (+cli command)
+
+### git  
+git init: 현재 디렉토리를 git 저장소로 지정  
+
+git add 파일명: 해당 파일을 staged상태로 만듬
+git commit -m "message": 메세지와 함께 커밋
+git push orign master: origin에 master 브랜치로 push  
+
+git reset HEAD 파일명: add 취소
+git reset HEAD^: 커밋 취소 (add도 취소됨)
+
+git log: 커밋한 기록들 확인  
+git status: unstaged된 파일에 대한 정보가 나옴, 새로 커밋 될 수 있는 변경사항에 대해 나옴  
+
+git branch -v: 현재 branch 상태 확인  
+git branch branch_name: branch 생성  
+git checkout branch_name: 작업환경을 입력한 branch로 변경  
+git merge branch_name: 현재 branch와 입력한 branch를 병합  
+git branch -d branch_name: 입력한 branch를 삭제  
+
+git remote add 별칭 주소: 원격저장소 등록 후 별칭 지정  
+git remote -v: 저장되어 있는 원격 저장소 확인  
+git branch -M branch_name: branch의 이름을 변경  
+
+git clone 주소 폴더이름: 폴더가 생기고 복사한 내용을 넣어줌  
+
+### cli  
+ls: 파일탐색  
+ls -al: 모든 파일 탐색  
+cd ..: 상위파일 이동  
+cat 파일명: 파일 내용 확인  
+vim 파일명: 파일 편집 (없다면 생성)
+vim 사용법    
+i - 편집  
+:q - 저장안하고 나가기  
+:wq - 저장하고 나가기  
 
 
 
@@ -47,6 +222,7 @@ jupyter notebook
 - y: 파이썬 입력 모드  
 - a: 현재 cell 위에 새로운 cell 추가
 - b: 현재 cell 아래에 새로운 cell 추가
+- dd: 현재 cell 삭제
 
 
 ## 통계
@@ -61,7 +237,8 @@ np.min()
 np.quantile(list, 0.25)  
 
 np.random.exponetial(scale = 3, size = n) 지수분포에서 랜덤추출  
-np.random.rand(n): 0~1사이의 값 n개 
+np.random.rand(n): 0~1사이의 값 n개 (uniform)  
+np.random.randn(n): 정규분포(평균:0, 분산: 1)
 
 
 **scipy**  
