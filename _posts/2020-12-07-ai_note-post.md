@@ -16,6 +16,7 @@ import numpy as np
 ### 함수
 **np.array(list)**  
 list를 array로 변환  
+
 <p>&nbsp;</p>  
 
 **arr.shape**  
@@ -47,7 +48,7 @@ main diagonal의 합 반환
 A가 array면 A.trace()로도 가능  
 <p>&nbsp;</p>  
 
-**np.linalg.det(A)**
+**np.linalg.det(A)**  
 determinant반환  
 <p>&nbsp;</p>  
 
@@ -59,7 +60,10 @@ determinant반환
 고유값과 고유벡터를 튜플로 묶어서 반환  
 <p>&nbsp;</p>  
 
-
+**np.arange(start, end, diff)**  
+start부터 end전까지 (포함안함) diff간격으로 array만듬  
+np.arange(n): 0~n-1까지 정수로 만듬  
+<p>&nbsp;</p>  
 
 
 ### 지식  
@@ -363,6 +367,7 @@ np.quantile(list, 0.25)
 np.random.exponetial(scale = 3, size = n) 지수분포에서 랜덤추출  
 np.random.rand(n): 0~1사이의 값 n개 (uniform)  
 np.random.randn(n): 정규분포(평균:0, 분산: 1)
+np.random.randint(0,20,20): 0~20(포함)까지의 정수를 20개 만듬  
 
 
 **scipy**  
