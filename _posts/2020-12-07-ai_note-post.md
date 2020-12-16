@@ -159,8 +159,132 @@ covid_by_region.sum()
 
 covid_by_region.mean()  
 데이터들의 평균을 출력해 준다.  
+<p>&nbsp;</p>  
+
+**covid.corr()**  
+상관계수를 행렬형식으로 나타내준다.  
+<p>&nbsp;</p>  
 
 
+## matplotlib (+ seaborn)  
+
+### matplotlib  
+import matplotlib.pyplot as plt  
+#matplotlib inline : 시각화를 주피터 노트북의 incell에서 진행  
+<p>&nbsp;</p>  
+
+
+**plt.figure(figsize = (6,6))**
+맨처음에 실행  
+그림이 그려질 사이즈 조절가능  
+<p>&nbsp;</p>  
+
+**label달기**  
+plt.xlabel(“x value”)  
+plt.ylabel(“f(x) value”)  
+<p>&nbsp;</p>  
+
+
+**plt.axis([x_min, x_max, y_min, y_max])**  
+그래프의 보고싶은 범위를 설정  
+<p>&nbsp;</p>  
+
+**눈금설정**  
+plt.xticks([i for i in range(-5, 6, 1)])  
+plt.yticks([i for i in range(0, 27, 3)]  
+<p>&nbsp;</p>  
+
+**plt.title(”title name”)**  
+제목 달아줌  
+<p>&nbsp;</p>  
+
+**plt.plot(x, y, label = "label name")**  
+꺾은선 그래프를 그려줌  
+x를 생략하면 인덱스가 x가 됨  
+<p>&nbsp;</p>  
+
+**plt.legend()**  
+범주생성, label을 설정하고 plot뒤에 나와야 함  
+<p>&nbsp;</p>  
+
+**plt.show()**  
+그래프를 그려줌  
+<p>&nbsp;</p>  
+
+**그래프 그리는 종류**  
+
+**plt.scatter(x,y)**  
+산점도 (Scatter Plot), 점으로 표현  
+<p>&nbsp;</p>  
+
+**plt.boxplot(y)**  
+박스그림 (box plot)  
+수치형 데이터에 대한 정보 (Q1, Q2, Q3, min, max)  
+<p>&nbsp;</p>  
+
+**plt.bar(x, y)**  
+plt.bar(x = X, height = Y)  
+막대 그래프(bar plot)  
+범주형 데이터의 값과 그 값의 크기를 직사각형으로 나타낸 그림  
+<p>&nbsp;</p>  
+
+**plt.hist(y, bins = np.arange(0,20,2))**  
+히스토그램   
+연속적인 막대그래프  
+<p>&nbsp;</p>  
+
+**plt.pie([1,2,3,4], labels = [‘a’,’b’,’c’,’d’])**  
+원형 그래프 (pie chart)  
+데이터에서 전체에 대한 부분의 비율을 부채꼴로 나타낸 그래프  
+<p>&nbsp;</p>  
+
+
+### Seaborn
+
+ import seaborn as sns  
+**s.fig.set_size_inches(10, 6)**  
+사이즈 조절  
+<p>&nbsp;</p>  
+
+
+x = np.arange(0,22,2)  
+y = np.random.randint(0,20,20)   
+위와 같은 형식으로 입력  
+
+**sns.kdeplot(y, shade = True)**
+커널밀도그림 (Kernel Density Plot)  
+히스토그램과 같은 연속적인 분포를 곡선화해서 그린 그림  
+shade를 True로 해주면 색칠해줌  
+y 축은 density  
+<p>&nbsp;</p>  
+
+**sns.countplot(x = vote_df[‘group’])**  
+vote_df = pd.DataFrame(dic)  
+카운트그림 (Count Plot)  
+범주형 column의 빈도수를 시각화 -> Groupby 후의 도수를 하는 것과 동일한 효과  
+<p>&nbsp;</p>  
+
+
+**sns.catplot()**  
+s = sns.catplot(x = ’WHO Region’, y = ‘Confirmed’, data  = covid, kind = ‘strip’)  
+캣 그림 (cat plot)  
+숫자형 변수와 하나 이상의 범주형 변수의 관계를 보여주는 함수  
+<p>&nbsp;</p>  
+
+**sns.stripplot(x = ‘WHO Region’, y = ‘Recovered’ , data = covid)**  
+스트립그림 (strip plot)  
+scatter plot과 유사하게 데이터의 수치를 표현하는 그래프  
+범주별로 표현이 가능하다  
+<p>&nbsp;</p>  
+
+**sns.swarmplot(x = ‘WHO Region’, y = ‘Recovered’ , data = covid)**  
+똑같은데 중복값을 더 잘보여줌  
+<p>&nbsp;</p>  
+
+**sns.heatmap(covid.corr())**  
+히트맵 (Heatmap)  
+데이터의 행렬을 색상으로 표현해주는 그래프  
+<p>&nbsp;</p>  
 
 
 
@@ -169,12 +293,12 @@ covid_by_region.mean()
 ### git  
 git init: 현재 디렉토리를 git 저장소로 지정  
 
-git add 파일명: 해당 파일을 staged상태로 만듬
-git commit -m "message": 메세지와 함께 커밋
+git add 파일명: 해당 파일을 staged상태로 만듬  
+git commit -m "message": 메세지와 함께 커밋  
 git push orign master: origin에 master 브랜치로 push  
 
-git reset HEAD 파일명: add 취소
-git reset HEAD^: 커밋 취소 (add도 취소됨)
+git reset HEAD 파일명: add 취소  
+git reset HEAD~: 커밋 취소 (add도 취소됨)  
 
 git log: 커밋한 기록들 확인  
 git status: unstaged된 파일에 대한 정보가 나옴, 새로 커밋 될 수 있는 변경사항에 대해 나옴  
