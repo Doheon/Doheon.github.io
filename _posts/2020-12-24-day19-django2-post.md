@@ -99,5 +99,4 @@ veiws.py에서 template로 전달
 
 template에서 form을 이용해서 정보를 얻음  
 
-{% csrf_token %} 보안 해제  
-{{coffee_form.as_p}}  형태를 바꿔줌  
+coffee_form.as_p  형태를 바꿔줌  
