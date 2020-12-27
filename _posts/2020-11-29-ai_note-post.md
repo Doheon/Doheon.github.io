@@ -403,20 +403,19 @@ python manage.py createsuperuserpy
 
 <p>&nbsp;</p>  
 **저장**  
-python manage.py makemigrations homepage
-git add와 비슷한 것으로 migrate할 항목을 업데이트 한다.
+python manage.py makemigrations homepage  
+git add와 비슷한 것으로 migrate할 항목을 업데이트 한다.  
 
-python manage.py migrate
-를 해줘야 클래스 형태의 모델이 연동되어 admin에서 사용할 수 있다.
+python manage.py migrate  
+를 해줘야 클래스 형태의 모델이 연동되어 admin에서 사용할 수 있다.  
 
-git add -> git commit과 비슷한 작업
+git add -> git commit과 비슷한 작업  
 <p>&nbsp;</p>  
 
 **csrf무시**
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt  
+from django.utils.decorators import method_decorator  
 
-{% csrf_token %}
 <p>&nbsp;</p>  
 
 render(request, 'app.html', dict): 해당 페이지 render  
@@ -440,7 +439,7 @@ request.POST['key']
 
 ### cli  
 
-virtualenv venv:  가상환경 생성
+virtualenv venv:  가상환경 생성  
 
 가상환경 진입  
 mac: source venv/bin/activate  
