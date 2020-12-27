@@ -97,14 +97,15 @@ html파일에서 {{ key }} 와같이 중괄호 두번안에 dic의 key값을 넣
 html만 사용하면 내용을 정해진 것만 할수 있지만  
 template언어를 사용하면 직접 데이터를 넣어 줄 수 있다.  
 => 동적인 웹사이트를 만들 수 있다.  
+
 <p>&nbsp;</p>  
 
 **template filter**  
 {{ key | filter }}와 같이 사용하며 value에 filter를 적용한 값이 나온다.   
 length : 길이 출력  
 upper: 대문자로 출력  
+
 <p>&nbsp;</p>  
 
 **template tag**  
-{%  %}와 같은 형식으로 사용하며 html에 로직을 도입할 수 있다  
-{% for %}  
+중괄호를 이용한 형식으로 사용하며 html에 로직을 도입할 수 있다  
