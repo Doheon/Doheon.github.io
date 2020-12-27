@@ -346,6 +346,18 @@ git remote -v: 저장되어 있는 원격 저장소 확인
 git branch -M branch_name: branch의 이름을 변경  
 
 git clone 주소 폴더이름: 폴더가 생기고 복사한 내용을 넣어줌  
+git clone -b branch_name 주소: 한 개의 branch만 clone  
+
+**fetch 후 merge하는 방법**  
+
+git fetch corini  
+git merge corini/week4  
+fetch를 해오면 해당 주소의 모든 branch에 대해 복사한 후 branch로 가져온다.  
+가져온 branch와 내 branch를 병합하면 pull과 같은 결과가 된다.  
+
+git worktree add -b branchname path: branch들을 독립적인 폴더에서 관리 할 수 있다.  
+
+
 
 ### cli  
 ls: 파일탐색  
@@ -379,6 +391,64 @@ jupyter notebook
 - a: 현재 cell 위에 새로운 cell 추가
 - b: 현재 cell 아래에 새로운 cell 추가
 - dd: 현재 cell 삭제
+
+
+## WEB  
+
+### django
+
+**admin 계정 생성**  
+python manage.py migrate  
+python manage.py createsuperuserpy  
+
+<p>&nbsp;</p>  
+**저장**  
+python manage.py makemigrations homepage
+git add와 비슷한 것으로 migrate할 항목을 업데이트 한다.
+
+python manage.py migrate
+를 해줘야 클래스 형태의 모델이 연동되어 admin에서 사용할 수 있다.
+
+git add -> git commit과 비슷한 작업
+<p>&nbsp;</p>  
+
+**csrf무시**
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
+{% csrf_token %}
+<p>&nbsp;</p>  
+
+render(request, 'app.html', dict): 해당 페이지 render  
+
+
+**db**  
+Model.objects.all()  
+Model.objects.get(id = pk)  
+
+form = Form()  
+form.is_valid()  
+form.save  
+<p>&nbsp;</p>  
+
+**request**  
+<input type="hidden" name = "_method" value = "delete">  
+request.POST.get('key', '')  
+request.POST['key']  
+<p>&nbsp;</p>  
+
+
+### cli  
+
+virtualenv venv:  가상환경 생성
+
+가상환경 진입  
+mac: source venv/bin/activate  
+win: ./venv/Scripts/activate.bat  
+
+deactivate: 비활성화  
+pip freeze: 설치된 모듈 전부 보여줌  
+
 
 
 ## 통계

@@ -79,10 +79,13 @@ split(','): 입력값을 기준으로 문자열을 리스트로 나눠준다.
 print("나는 {}등이다".format(rank))  
 {}안에 들어갈 내용을 정해줄 수 있음  
 
-
 ### dir(class)  
 모든 매서드 확인  
 
+### os  
+import os  
+os.path.join(BASE_DIR, “homepage”, “template”)  
+경로들을 합쳐준다. (슬래시를 자동으로 해준다.)  
 
 
 

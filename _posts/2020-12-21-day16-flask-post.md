@@ -1,90 +1,51 @@
 ---
-title: "[인공지능 데브코스] 3주차 day4 - EDA"
+title: "[인공지능 데브코스] 4주차 day1 - flask"
 toc: true
 toc_sticky: true
-date: 2020-12-17
+date: 2020-12-21
 categories: TIL
 ---
 
-## 12월 17일 목   
+## 12월 21일 월   
 
-오늘은 데이터를 분석하는 방법중 하나인 EDA에 대해서 공부했다. EDA의 과정에 대해서 배우고 주피터 노트북의 환경에서 numpy, pandas, matlibplot 을 이용하여 다양한 방식으로 데이터를 분석해 보았다.  
-
-
-## EDA란?   
-데이터 자체의 특성을 육안으로 확인하는 과정  
-
-데이터를 분석하는 기술적 접근은 매우 많다.  
-**데이터 그 자체**만으로부터 인사이트를 얻어내는 접근법  
+파이썬 기반 웹 프레임워크인 flask에 대해 공부했다. flask를 이용해서 REST API를 구현해 봤고 sqlalchemy를 이용하여 db연동도 구현하였다.   
 
 
-## EDA의 process  
+## 인터넷과 웹  
 
-1. 분석의 목적과 변수 확인
-2. 데이터 전체적으로 살펴보기 
-3. 데이터의 개별 속성 파악하기
-
-
-
-## EDA with Example - Titanic
-
-### 분석의 목적과 변수 확인  
-살아남은 사람들은 어떤 특징을 가지고 있었을까?   
-titanic_df.dtypes : 타입 확인  
+**인터넷(internet)**  
+전 세계 컴퓨터를 하나로 합치는 거대한 통신망  
 <p>&nbsp;</p>  
 
-### 데이터 전체적으로 살펴보기  
-titanic_df.describe()  
-수치형 데이터에 대한 요약 제공  
+**웹(Web)**  
+인터넷에 연결된 사용자들이 정보를 공유할 수 있는 공간  
 
-titanic_df.corr()  
-상관계수 확인  
-Correlation is Not Causation  
-상관성: 경향성만 나타냄  
-인과성: a가 일어나면 b가 일어난다  
+웹은 클라이언트와 서버 사이의 소통이다  
+(두 컴퓨터간의 상호 작용)  
 
-상관성이 있다고 반드시 인과성이 있다고는 할 수 없다.  
+1. client가 server에 정보를 요청한다.  
+2. server는 이 요청받은 정보에 대한 처리를 진행한다.   
+3. server가 client에게 요청에 대해 응답한다.   
 
-titanic_df.isnull().sum()  
-null인 항목을 찾아줌 (결측치를 찾아줌)  
-결측치를 처리할 방법이 많기 때문에 어떻게 결정할지 선택해야함  
+http.request  
+http.response  
 <p>&nbsp;</p>  
 
 
-### 데이터의 개별 속성 파악하기 
+## Flask with Rest API  
 
-**survived column**  
-titanic_df[‘Survived’].sum()  
-titnaic_df[’Survived’].value_counts()  
-sns.countplot(x = ‘Survived’, data =  titanic_df)  
+**API**  
+프로그램들이 서로 상호작용하는 것을 도와주는 매개체  
 <p>&nbsp;</p>  
 
-**Pclass**  
-titanic_df[[‘Pclass’, ‘Survived’]].goupby(‘Pclass’)  
-titanic_df[[‘Pclass’, ‘Survived’]].goupby(‘Pclass’).mean() : 생존률  
-<p>&nbsp;</p>  
+**Representational State Transfer**  
+웹 서버가 요청을 응답하는 방법론 중 하나  
 
-**Sex**  
-titanic_df.groupby([‘Survived’, ‘Sex’])[’Survived’].count()  
-sns.catplot(x = ‘Sex’, col = ‘Suvived’, kind = ‘count’, data = titanic_df)  
-<p>&nbsp;</p>  
+데이터가 아닌, 자원의 관점으로 접근  
 
-**Age**  
-remind : 결측치 존재  
+REST API  
+HTTP URI통해 자원을 명시하고  
+HTTP Method를 통해 해당 자원에 대한 CRUD를 진행  
 
-fig, ax = plt.subplots(1,1, figsize = (10,5))  
-sns.kdeplot(titanic_df[titanic_df.Survived == 1]['Age'], ax = ax)  
-sns.kdeplot(titanic_df[titanic_df.Survived == 0]['Age'], ax = ax)  
-plt.legend(['Survived', 'Dead'])  
-plt.show()  
-<p>&nbsp;</p>  
-
-**Sex + Pclass vs Survived**  
-sns.catplot(x = ‘Pclass’, y = ’Survived’, hue = ’Sex’,kind = ‘point’, data = titanic_df)  
-hue로 추가 변수에 대해 파악  
-<p>&nbsp;</p>  
-
-**Age + Pclass**  
-titanic_df[‘Age’][titanic_df.Pclass == 1].plot(kind=‘kde’)  
-
-<p>&nbsp;</p>  
+REST API의 Stateless  
+client의 context를 서버에서 유지하지 않는다   
