@@ -7,8 +7,8 @@ categories: TIL 자료구조
 ---
 ## 11월 30일 월  
 
-인공지능을 공부하기 전에 프로그래밍의 기본인 자료구조와 알고리즘의 기초부터 공부를 시작했다.  
-대부분 익숙한 내용들이지만 오랬동안 다루지 않았던 Python으로 여러 자료구조들을 공부해 보면서  
+인공지능을 공부하기 전에 프로그래밍의 기본인 자료구조와 알고리즘의 기초부터 공부를 시작했다. 
+대부분 익숙한 내용들이지만 오랬동안 다루지 않았던 Python으로 여러 자료구조들을 공부해 보면서 
 Python에 대해 익숙해질 수 있었고 예전에 배웠던 것들을 확실하게 복습할 수 있었다.
 
 ## 자료구조
@@ -32,7 +32,7 @@ Python에 대해 익숙해질 수 있었고 예전에 배웠던 것들을 확실
 
 ```python
 list.append(val) #O(1)
-```  
+```
 - 끝에서 꺼내기  
 
 ```python
@@ -74,12 +74,12 @@ list.sort(reverse = True)
 sorted(list, key = lambda x:len(x)) #길이를 기준으로 정렬
 ```
 <p>&nbsp;</p>  
-  
+
 **리스트의 탐색**
 - 선형탐색: 앞에서 부터 뒤로 발견될 때까지 순차적으로 탐색 `O(n)`  
 - 이진탐색: 정렬되어있는 배열에서만 사용가능한 탐색 `O(log n)`  
 
- 
+
 **이진탐색의 구현**  
 주어진 배열을 반으로 나누고 찾는 값이 왼쪽, 오른쪽중 어디에 있는지 확인 후 배열의 범위를 update해준다
 
@@ -95,7 +95,7 @@ def solution(L, x):                   #L은 정렬된 배열, x는 찾고자하�
   return left if (left<len(L) and L[left] == x ) else -1
   #범위안에 x가 있다면 left는 right와 같아져서 x를 가리키게 되고 아니라면 범위를 벗어나거나 다른 값을 가리키게 된다.
   #범위안에 x가 여러개라면 left는 그 중 가장 작은 값을 가리키고 범위안에 x가 없다면 x보다 큰 가장 작은 값을 가리킨다.
-```    
+```
 <p>&nbsp;</p>  
 
 
@@ -112,7 +112,7 @@ def solution(L, x, l, u):         #L: 정렬된 배열, x: 찾는 값, l: update
       return solution(L,x,l,mid)
   else:                           #아니라면 범위를 [mid+1, u)로 update
       return solution(L,x,mid+1,u)
-```    
+```
 <p>&nbsp;</p>  
 
 ## 연결리스트(Linked List)
@@ -122,7 +122,7 @@ def solution(L, x, l, u):         #L: 정렬된 배열, x: 찾는 값, l: update
 두가지 요소를 포함한다.  
   - Data: 정수, 문자열 등 자료가 담고있는 정보  
   - A set of operations: 삽입, 삭제, 순회, 정렬, 탐색 등 data를 다룰 수 있는 연산  
-  
+
 ### 연결리스트  
 값을 가지고 있는 노드들을 일렬로 연결시켜 만든 추상적 자료구조  
 
@@ -146,9 +146,9 @@ class Node:
   def __init__(self, item):
       self.data = item
       self.next = None
-```  
+```
 <p>&nbsp;</p>  
-      
+
 **연결 리스트의 구현**  
 추상적 자료구조이므로 data, a set of operations를 포함하고 있다.  
 
@@ -177,7 +177,7 @@ def traverse(self):
       result.append(curr.data)    #result에 curr의 값을 추가해주고
       curr = curr.next            #curr을 다음 노드로 변경
   return result
-```  
+```
 <p>&nbsp;</p>  
 
 - `getAt(pos)`: pos위치에 있는 노드의 값을 반환 `O(n)`  
@@ -192,7 +192,7 @@ while i < pos:                      #curr을 pos번 next해줌
     curr = curr.next                
     i += 1
 return curr                         #pos번째 node를 반환
-```  
+```
 <p>&nbsp;</p>  
 
 - `insertAt(pos, newNode)`: pos위치에 newNode를 삽입 `O(n)`  
@@ -219,9 +219,9 @@ def insertAt(self, pos, newNode):
 
   self.nodeCount += 1                      #전체 노드의 개수를 1만큼 증가
   return True
- ```  
+```
  <p>&nbsp;</p>  
- 
+
 - `popAt(pos)`: pos위치에 있는 node를 삭제 `O(n)`  
 
 ```python
@@ -246,9 +246,9 @@ def popAt(self, pos):
 
   self.nodeCount -= 1                       #nodeCount를 1만큼 감소
   return data
-```  
+```
 <p>&nbsp;</p>  
-  
+
 **dummy node의 필요성**  
 위에서 언급한 `popAt(pos)`, `insertAt(pos, newNode)`는 지정 위치까지 직접 이동해서 찾은 후 연산을 하기 때문에 선형 시간복잡도`O(n)`를 가지며 비효율적이다.  
 연결리스트에서는 효율적인 삽입과 삭제를 위해 지정한 노드의 다음에 삽입하는 `insertAfter(prev, newNode)`와 지정한 노드 다음 노드를 삭제하는 `popAfter(prev)`를 사용하는데 이와 같은 함수로는 맨 앞에 노드 삽입이나 맨 앞 노드의 삭제를 할 수 없으므로 데이터를 가지고 있지 않은 dummy node를 맨앞에 추가하여 head로 사용하여 맨 앞 노드도 삭제, 삽입을 할 수 있도록 한다.
@@ -274,7 +274,7 @@ def insertAt(self, pos, newNode):                 #insertAfter를 구현했으�
     else:                                         #아니라면  getAt을 이용해 구함
         prev = self.getAt(pos - 1)          
     return self.insertAfter(prev, newNode)        #위에서 구한 prev로 insertAfter를 이용해 노드 삽입
-```  
+```
 <p>&nbsp;</p>  
 
    - `popAfter(prev)`: 지정한 노드 다음위치의 노드를 삭제 `O(1)`  
@@ -300,7 +300,7 @@ def insertAt(self, pos, newNode):                 #insertAfter를 구현했으�
     else:
         prev = self.getAt(pos-1)
         return self.popAfter(prev)
- ```  
+  ```
 <p>&nbsp;</p>  
 
 위에서 구현한 `insertAt(pos, newNode)`와 `popAt(pos)`를 보면 처음에 구현했을때 보다 예외처리를 해야할 부분이 줄어서 코드가 간결해 진 것을 확인 할 수 있다.  
@@ -315,9 +315,9 @@ class Node:
       self.data = item
       self.prev = None
       self.next = None
- ```  
+```
 <p>&nbsp;</p>  
-   
+
 **Data**  
 연결 리스트와 동일  
 
@@ -344,9 +344,9 @@ def getAt(self, pos):
           i += 1
 
   return curr
- ```  
+```
 <p>&nbsp;</p>  
-      
+
 **양방향 연결 리스트에서의 dummy node**  
 양방향 연결 리스트에서는 전에 구현했던 `insertAfter(pos, newNode)`, `popAfter(pos)` 뿐만 아니라 선택한 노드의 전 노드에서 작업을 수행하는 `insertBefore(pos, newNode)`, `popBefore(pos)` 또한 구현할 수 있다. 그러나 이를 위해서는 단방향 연결 리스트때와 같은 이유로 tail쪽에 값이 없는 dummy node가 필요하다. 아래에서는 head와 tail에 dummy node를 추가하고 단방향 연결 리스트에서 구현했던 연산들을 구현해 보았다.  
 
@@ -388,9 +388,9 @@ def popAt(self, pos):
     else:
         next = self.getAt(pos+1)
         return self.popBefore(next)
-```  
+```
 <p>&nbsp;</p>  
-       
+
 위의 코드를 보면 양방향 연결 리스트를 이용하면 앞에 있는 노드를 삭제, 삽입 할 수 있을 뿐만 아니라 뒤에 있는 노드 또한 삭제, 삽입 할 수 있다는 것을 알 수 있다.  
 정리해 보면 양방향 연결리스트는  
 
@@ -403,22 +403,22 @@ def popAt(self, pos):
 이를 통해 특정 연산을 구현하는 역할 뿐만 아니라 실수의 최소화와 코드의 간결함을 위해 dummy node의 추가는 좋은 효과를 가지고 있는 것을 확인 할 수 있다.  
 
   
+
   
+
   
+
   
+
   
+
   
+
   
+
   
+
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
   
 

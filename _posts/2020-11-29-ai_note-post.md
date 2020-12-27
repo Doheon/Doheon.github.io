@@ -81,8 +81,7 @@ array[:][a:b]
 table의 역할을 대체하기 위해 많이 사용  
 import pandas as pd  
 
-### 함수  
-
+### Series
 **s = pd.Series(list)**  
 list를 series로 변환  
 <p>&nbsp;</p>  
@@ -113,27 +112,34 @@ t.get(key, 0)
 s = pd.Series(np.random.randn(5), name = "random_nums")  
 <p>&nbsp;</p>  
 
+**s.value_counts()**  
+series에서 데이터의 항목별 개수를 세줌  
+<p>&nbsp;</p>  
 
+### DataFrame
 **df = pd.DataFrame(dic)**  
 dictionary를 dataframe으로 변환  
 df = pd.DataFrame(d, index = list}  
 df.dtypes  
 <p>&nbsp;</p>  
 
-**covid = pd.read_csv(path)**  
+**df = pd.read_csv(path)**  
 csv파일을 dataframedmfh 변환  
 <p>&nbsp;</p>  
 
-**covid.head(n)**  
+**df.head(n)**  
 처음 n개의 데이터 참조  
 
-**covid.tail(n)**  
+**df.tail(n)**  
 마지막 n개의 데이터 참조  
 <p>&nbsp;</p>  
 
 **df[‘column_name’] or df.column_name**  
 해당 열 접근, 후자의 접근방법은 띄어쓰기 같은걸 인식을 못함  
 <p>&nbsp;</p>  
+
+**df[['a', 'b']]**  
+리스트로 넣으면 여러개의 열을 추출할 수 있다.  
 
 **covid[covid[‘New cases’] > 100]**  
 해당 조건을 만족하 row만 추출  
@@ -157,6 +163,9 @@ numpy와 완전히 동일 slicing가능
 
 **groupby**  
 covid_by_region = covid[‘Confirmed’].groupby(by=covid[“WHO Region”])  
+.groupby('WHO Region') 해도됨  
+
+.groupby(['a','b'])와 같이 여러기준으로 그룹도 가능  
 
 covid_by_region.sum()  
 지역별 데이터의 합을 출력해 준다.  
@@ -165,9 +174,19 @@ covid_by_region.mean()
 데이터들의 평균을 출력해 준다.  
 <p>&nbsp;</p>  
 
-**covid.corr()**  
+**df.corr()**  
 상관계수를 행렬형식으로 나타내준다.  
 <p>&nbsp;</p>  
+
+**df.describe()**  
+수치형 데이터 전체의 요약을 알려준다. (평균 등)  
+<p>&nbsp;</p>  
+
+**df.isnull()**  
+null인 항목, 결측치를 알려줌  
+.sum()을 붙이면 더 보기 편함  
+<p>&nbsp;</p>  
+
 
 
 ## matplotlib (+ seaborn)  
@@ -181,6 +200,12 @@ import matplotlib.pyplot as plt
 **plt.figure(figsize = (6,6))**
 맨처음에 실행  
 그림이 그려질 사이즈 조절가능  
+<p>&nbsp;</p>  
+
+**plt.subplot(가로, 세로, figsize = (10,5))**  
+fig, ax = plt.subplot(a, b, figsize = (10,5))  
+그림 여러개를 한번에 그릴 때 사용  
+가로 a개 세로 b개 그리고 fix, ax를 추가로 이용  
 <p>&nbsp;</p>  
 
 **label달기**  
@@ -206,6 +231,7 @@ plt.yticks([i for i in range(0, 27, 3)]
 꺾은선 그래프를 그려줌  
 x를 생략하면 인덱스가 x가 됨  
 <p>&nbsp;</p>  
+
 
 **plt.legend()**  
 범주생성, label을 설정하고 plot뒤에 나와야 함  
@@ -255,7 +281,7 @@ x = np.arange(0,22,2)
 y = np.random.randint(0,20,20)   
 위와 같은 형식으로 입력  
 
-**sns.kdeplot(y, shade = True)**
+**sns.kdeplot(y, shade = True)**  
 커널밀도그림 (Kernel Density Plot)  
 히스토그램과 같은 연속적인 분포를 곡선화해서 그린 그림  
 shade를 True로 해주면 색칠해줌  
@@ -263,8 +289,8 @@ y 축은 density
 <p>&nbsp;</p>  
 
 **sns.countplot(x = vote_df[‘group’])**  
-vote_df = pd.DataFrame(dic)  
-카운트그림 (Count Plot)  
+sns.countplot(x = 'group', data = vote_df)랑 똑같음  
+카운트그림 (Count Plot) 막대그래프  
 범주형 column의 빈도수를 시각화 -> Groupby 후의 도수를 하는 것과 동일한 효과  
 <p>&nbsp;</p>  
 
@@ -273,6 +299,8 @@ vote_df = pd.DataFrame(dic)
 s = sns.catplot(x = ’WHO Region’, y = ‘Confirmed’, data  = covid, kind = ‘strip’)  
 캣 그림 (cat plot)  
 숫자형 변수와 하나 이상의 범주형 변수의 관계를 보여주는 함수  
+x: 범주형변수, y: 숫자형 변수  
+, hue: 추가범주, : hue로 범주를 추가 할 수 있다.  
 <p>&nbsp;</p>  
 
 **sns.stripplot(x = ‘WHO Region’, y = ‘Recovered’ , data = covid)**  
@@ -366,8 +394,8 @@ np.quantile(list, 0.25)
 
 np.random.exponetial(scale = 3, size = n) 지수분포에서 랜덤추출  
 np.random.rand(n): 0~1사이의 값 n개 (uniform)  
-np.random.randn(n): 정규분포(평균:0, 분산: 1)
-np.random.randint(0,20,20): 0~20(포함)까지의 정수를 20개 만듬  
+np.random.randn(n): 정규분포(평균:0, 분산: 1)  
+np.random.randint(0,20,20): 0~20(미포함)까지의 정수를 20개 만듬  
 
 
 **scipy**  
