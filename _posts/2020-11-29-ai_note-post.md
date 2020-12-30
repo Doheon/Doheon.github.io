@@ -379,6 +379,9 @@ i - 편집
 terminal  
 jupyter notebook  
 
+jupyter nbconvert --to markdown notebook.ipynb: ipnb파일을 markdown으로 변환  
+
+
 ### 단축키  
 
 #### 입력모드 (enter)
@@ -396,6 +399,10 @@ jupyter notebook
 ## WEB  
 
 ### django
+
+**시작**  
+django-admin startproject projname  
+<p>&nbsp;</p>  
 
 **admin 계정 생성**  
 python manage.py migrate  
