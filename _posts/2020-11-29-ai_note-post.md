@@ -400,15 +400,21 @@ jupyter nbconvert --to markdown notebook.ipynb: ipnb파일을 markdown으로 변
 
 ### django
 
-**시작**  
+**프로젝트 만들기**  
 django-admin startproject projname  
 <p>&nbsp;</p>  
 
 **admin 계정 생성**  
 python manage.py migrate  
-python manage.py createsuperuserpy  
-
+python manage.py createsuperuser  
 <p>&nbsp;</p>  
+
+**app만들기**  
+django-admin startapp appname  
+프로젝트 경로 안에서 실행  
+<p>&nbsp;</p>  
+
+
 **저장**  
 python manage.py makemigrations homepage  
 git add와 비슷한 것으로 migrate할 항목을 업데이트 한다.  
