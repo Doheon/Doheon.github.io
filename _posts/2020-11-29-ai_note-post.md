@@ -65,6 +65,17 @@ start부터 end전까지 (포함안함) diff간격으로 array만듬
 np.arange(n): 0~n-1까지 정수로 만듬  
 <p>&nbsp;</p>  
 
+**np.c_[a,b]**  
+합쳐줌  
+
+**np.unique(array, return_counts = True)**  
+같은값들의 개수를 알려줌  
+
+**np.newaxis**  
+A[np.newaxis, :], A[:, np.newaxis]  
+주로 array에서 사용하며 array를 1줄짜리 matrix로 모양을 바꾸고 싶을 때 사용한다.  
+
+
 
 ### 지식  
 
@@ -186,6 +197,17 @@ covid_by_region.mean()
 null인 항목, 결측치를 알려줌  
 .sum()을 붙이면 더 보기 편함  
 <p>&nbsp;</p>  
+
+**df.drop("name", axis = 1, inpace = True)**  
+특정 열을 없애줌  
+
+**df.dropna(subset = ["name"])**  
+nan값이 있는 행자체를  없애줌  
+
+**df.fillna(median, inplace = True)**  
+nan값을 특정 값으로 채워줌  
+
+
 
 
 
@@ -344,6 +366,7 @@ git branch -d branch_name: 입력한 branch를 삭제
 git remote add 별칭 주소: 원격저장소 등록 후 별칭 지정  
 git remote -v: 저장되어 있는 원격 저장소 확인  
 git branch -M branch_name: branch의 이름을 변경  
+git remote rm 별칭: 원격저장소 별칭 삭제
 
 git clone 주소 폴더이름: 폴더가 생기고 복사한 내용을 넣어줌  
 git clone -b branch_name 주소: 한 개의 branch만 clone  
@@ -354,6 +377,8 @@ git fetch corini
 git merge corini/week4  
 fetch를 해오면 해당 주소의 모든 branch에 대해 복사한 후 branch로 가져온다.  
 가져온 branch와 내 branch를 병합하면 pull과 같은 결과가 된다.  
+git reset --hard origin/master: 강제로 덮어쓴다.
+
 
 git worktree add -b branchname path: branch들을 독립적인 폴더에서 관리 할 수 있다.  
 
@@ -364,6 +389,7 @@ ls: 파일탐색
 ls -al: 모든 파일 탐색  
 cd ..: 상위파일 이동  
 cat 파일명: 파일 내용 확인  
+rm -rf 폴더명: 폴더삭제  
 vim 파일명: 파일 편집 (없다면 생성)
 vim 사용법    
 i - 편집  
@@ -425,7 +451,7 @@ python manage.py migrate
 git add -> git commit과 비슷한 작업  
 <p>&nbsp;</p>  
 
-**csrf무시**
+**csrf무시**  
 from django.views.decorators.csrf import csrf_exempt  
 from django.utils.decorators import method_decorator  
 
@@ -478,6 +504,8 @@ np.random.exponetial(scale = 3, size = n) 지수분포에서 랜덤추출
 np.random.rand(n): 0~1사이의 값 n개 (uniform)  
 np.random.randn(n): 정규분포(평균:0, 분산: 1)  
 np.random.randint(0,20,20): 0~20(미포함)까지의 정수를 20개 만듬  
+np.random.permutation(n): 0~n-1까지의 수를 섞어서 반환 (주로 test set만들때 사용)  
+
 
 
 **scipy**  
@@ -488,6 +516,12 @@ import scipy.stats
 ddos는 표본일 때
 
 from scipy import stats
+
+유니폼 분포  
+stats.uniform.rvs(size = n, loc = start, scale = width)  
+
+베르누이 분포  
+bernoulli.rvs(size=10000,p=0.8)  
 
 이항분포  
 1 - stats.binom.cdf(0, n=3, p=0.2)  
