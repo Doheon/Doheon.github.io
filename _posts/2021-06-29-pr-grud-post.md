@@ -3,58 +3,54 @@ title: "[논문번역] GRU-D: Recurrent Neural Networks for Multivariate Time Se
 toc: true
 toc_sticky: true
 date: 2021-06-29
-categories: TIL
+categories: Paper Translate
 ---
 
-paper: https://arxiv.org/pdf/1606.01865.pdf
+paper: <https://arxiv.org/pdf/1606.01865.pdf>
 
-code: https://github.com/zhiyongc/GRU-D
-
-
-
-요약: decay rate를 이용하여 결측치를 대체하고, 결측치를 채운 값이라는 표시인 mask를 학습과정에 포함하여 학습을 진행한다.
-
-missing value imputation 자체에 대한 논문이 아니라 missing value가 있는 time series data를 가지고 학습을 하는 방법에 대한 논문. 
-
-마지막으로 관측된 값과 절대적인 평균으로 결측치를 대체하므로 헬스 데이터처럼 절대적 평균(ex.체온,맥박, 혈압) 있는 데이터에만 사용이 가능해서 매우 제한적으로만 사용 가능하다.  우리한테 적용하기에는 어려울듯
+code: <https://github.com/zhiyongc/GRU-D>
 
 
 
+요약: decay rate를 이용하여 결측치를 대체하고, 결측치를 채운 값이라는 표시인 mask를 학습과정에 포함하여 학습을 진행한다.  
+
+missing value imputation 자체에 대한 논문이 아니라 missing value가 있는 time series data를 가지고 학습을 하는 방법에 대한 논문.   
+
+마지막으로 관측된 값과 절대적인 평균으로 결측치를 대체하므로 헬스 데이터처럼 절대적 평균(ex.체온,맥박, 혈압) 있는 데이터에만 사용이 가능해서 매우 제한적으로만 사용 가능하다.  
 
 
 
-
- ![image-20210622142841300](2021-06-29-pr-grud-post.assets/image-20210622142841300.png)
+ ![image-20210622142841300](/assets/images/2021-06-29-pr-grud-post.assets/image-20210622142841300.png)
 
 
 
 
 
-Masking, Time interval을 활용하여 missingvalue에 대한 정보를 얻음
+Masking, Time interval을 활용하여 missingvalue에 대한 정보를 얻음  
 
-![image-20210621161733698](2021-06-29-pr-grud-post.assets/image-20210621161733698.png)
+![image-20210621161733698](/assets/images/2021-06-29-pr-grud-post.assets/image-20210621161733698.png)
 
 
 
 #### GRU
 
-결측값 처리에 대한 작업은 GRU의 구조에 수정이 없는 3가지 방법으로 해결이 가능하다.
+결측값 처리에 대한 작업은 GRU의 구조에 수정이 없는 3가지 방법으로 해결이 가능하다.  
 
-GRU-mean: 결측치가 아닌 값들의 평균을 사용
+GRU-mean: 결측치가 아닌 값들의 평균을 사용  
 
-GRU-forward: 결측치가 아닌 마지막 값을 사용
+GRU-forward: 결측치가 아닌 마지막 값을 사용  
 
-GRU-simple: 위의 방법으로 구한 값과 결측치 여부를 알려주는 mask와 time interval을 concat해서 사용
+GRU-simple: 위의 방법으로 구한 값과 결측치 여부를 알려주는 mask와 time interval을 concat해서 사용  
 
-=> concat(x, mask, time interval)
+=> concat(x, mask, time interval)  
 
 
 
-이러한 방법들은 결측치가 채워진건지 진짜 관측된 값인지 구분하지 못한다.
+이러한 방법들은 결측치가 채워진건지 진짜 관측된 값인지 구분하지 못한다.  
 
-단순히 결측치 마스킹과 시간 간격 벡터의 concat으로는 결측치의 시간적 구조를 사용하지 못한다.
+단순히 결측치 마스킹과 시간 간격 벡터의 concat으로는 결측치의 시간적 구조를 사용하지 못한다.  
 
-따라서 이러한 방법은 결측성을 완벽하게 사용하지 못한다.
+따라서 이러한 방법은 결측성을 완벽하게 사용하지 못한다.  
 
 
 
@@ -80,7 +76,7 @@ GRU-simple: 위의 방법으로 구한 값과 결측치 여부를 알려주는 m
 
 요약: 변수마다 decay rates가 있고 데이터가 시간이 지날 수록 희미해지는 것을 표현한다. 이 값을 학습한다.
 
-![image-20210621170759604](2021-06-29-pr-grud-post.assets/image-20210621170759604.png)
+![image-20210621170759604](/assets/images/2021-06-29-pr-grud-post.assets/image-20210621170759604.png)
 
  decay rates는 점점 감소하는 0~1의 값을 가진다. sigmoid와 같이 점점 감소하는 0~1사이의 값을 가지는 함수라면 다른걸 사용해도 된다.
 
@@ -92,7 +88,7 @@ GRU-D 모델은 두개의 훈련가능한 decays를 통합하여 입력특징값
 
 이러한 가정하에, 훈련가능한 decay scheme는 다음과 같이 쉽게 적용될 수 있다.
 
-![image-20210621171829662](2021-06-29-pr-grud-post.assets/image-20210621171829662.png)
+![image-20210621171829662](/assets/images/2021-06-29-pr-grud-post.assets/image-20210621171829662.png)
 
 x^d_t'은 d번째 값의 마지막관측값이고 x^~d는 d번째 값의 empirical mean이다.
 
