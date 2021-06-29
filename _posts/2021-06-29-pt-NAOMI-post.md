@@ -166,3 +166,23 @@ gerator G와 discriminator D의 adversarial 학습 최적화 함수는 다음과
 
 
 ![image-20210628161659416](/assets/images/2021-06-29-pt-NAOMI-post.assets/image-20210628161659416.png)
+
+
+
+
+
+## Test
+
+오픈되어 있는 도로 교통 데이터에 자체적으로 데이터를 없애고 이 방법을 직접 적용해 본 결과는 아래와 같다. 
+
+파란선이 실제, 노란선이 예측이다.
+
+![result_pretrain](/assets/images/2021-06-29-pt-NAOMI-post.assets/result_pretrain.png)
+
+![result_gan](/assets/images/2021-06-29-pt-NAOMI-post.assets/result_gan.png)
+
+
+
+위의 사진은 pretrain만 한 결과고 아래 사진은 GAN까지 적용시킨 결과다.
+
+GAN은 적용시키지 않은게 더 좋은 결과가 나왔으며 나쁘지 않은 성능의 결과를 확인할 수 있다.
