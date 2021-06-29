@@ -3,7 +3,7 @@ title: "[논문번역] BRITS: bidirectional recurrent imputation for time series
 toc: true
 toc_sticky: true
 date: 2021-06-29
-categories: Paper Translate
+categories: Paper-Translate
 ---
 
 

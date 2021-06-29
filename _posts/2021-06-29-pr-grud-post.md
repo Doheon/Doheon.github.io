@@ -3,7 +3,7 @@ title: "[논문번역] GRU-D: Recurrent Neural Networks for Multivariate Time Se
 toc: true
 toc_sticky: true
 date: 2021-06-29
-categories: Paper Translate
+categories: Paper-Translate
 ---
 
 paper: <https://arxiv.org/pdf/1606.01865.pdf>

@@ -3,7 +3,7 @@ title: "[논문번역] NAOMI: Non-AutOregressive Multiresolution sequence Imputa
 toc: true
 toc_sticky: true
 date: 2021-06-29
-categories: Paper Translate
+categories: Paper-Translate
 ---
 
 paper: <https://arxiv.org/pdf/1901.10946.pdf>
@@ -20,7 +20,7 @@ device & conquer를 사용하여 다양한 간격으로 sequence를 보간하는
 
 
 
-### Abstract
+## Abstract
 
 결측치 대체는 모션 트래킹 부터 물리적 시스템의 동역학 까지 시공간적인 모델링에서 기본적인 문제이다.  Deep autoregressive model (ex. ARIMA) 은 긴 범위의 시퀀스를 imputing할 경우 심각한 오류 전파를 겪는다. 이 논문에서는 non-autoregressive 접근과 새로운 deep 생성 모델을 제안한다: Non-AutOregressive Multiresolution Imputation (NAOMI) , 긴 범위의 시퀀스의 임의의 결측 패턴을 대체한다.
 
@@ -32,7 +32,6 @@ NAOMI 는 시공간 데이터의 multiresolution 구조를 이용하고, divide-
 
 
 
-### Introduction
 
 결측값의 문제는 실생활의 시계열 데이터에서 종종 발생한다. 결측값은 학습 데이터의 관측 편향을 유발하여 학습을 불안정하게 한다. 그런 이유로 결측값을 imputing하는 것은 시퀀스 학습 작업에서 매우 중요하다.
 
@@ -54,7 +53,7 @@ NAOMI 는 시공간 데이터의 multiresolution 구조를 이용하고, divide-
 
 
 
-### Non-Autoregressive Multiresolution Sequence Imputation
+## Non-Autoregressive Multiresolution Sequence Imputation
 
 X = (x1, x2, ..., xT) 를 T관측의 시퀀스라고 한다. X는 masking sequence M = (m1,m2,.., mT)로 표 표현되는 결측치를 가지고 있다. masking mT는 xt가 결측값일 경우 0의 값을 갖는다. 우리의 목표는 결측치를 시퀀스들의 모음에 결측 데이터를 적절한 값으로 대체하는 것이다.
 
@@ -70,7 +69,7 @@ X = (x1, x2, ..., xT) 를 T관측의 시퀀스라고 한다. X는 masking sequen
 
 
 
-### NAOMI Architecture and Imputation Strategy
+## NAOMI Architecture and Imputation Strategy
 
 아래 그림에서 볼 수 있듯이, NAOMI는 두 개의 요소를 가지고 있다.
 
@@ -148,7 +147,7 @@ NAOMI의 총 런타임은  O(T)이다. 메모리 사용량은 bi-directional RNN
 
 
 
-### Learning Objective
+## Learning Objective
 
 C를 완성된 시퀀스의 모임이라고 하고, G(X,M) 은 우리의 생성 모델 NAOMI을 나타내고, p(M)은 사전의 masking을 나타낸다. imputation model은 다음을 최적화하면서 학습된다.
 
