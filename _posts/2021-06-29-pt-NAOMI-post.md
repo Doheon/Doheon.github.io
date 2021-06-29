@@ -111,7 +111,7 @@ decoder는 non-autoregressive 방법으로 재귀적으로 디코드한다 : hid
 
 **Multiresolution decoder**
 
-주어진 joint hidden states H := [H<sup>f</sup>, H<sup>b</sup>]에 대해서, decoder는 완벽한 문장 p(X|H)의 분포에 대해 학습한다. 우리는 *divide and conquer* 방법을 적용하고 반복적으로 decode했다.  
+주어진 joint hidden states H := [H<sup>f</sup>, H<sup>b</sup>]에 대해서, decoder는 완벽한 문장 p(X\|H)의 분포에 대해 학습한다. 우리는 *divide and conquer* 방법을 적용하고 반복적으로 decode했다.  
 
 위의 그림에서처럼, 각각의 반복마다 디코더는 두개의 알려진 타임 스텝을 기준으로 삼는다 (예시에서는 x1,x5). 그리고 그 두 점의 modpoint(x3)를 impute한다. 하나의 기준점은 새롭게 impute된 스텝으로 대체되고 더 세밀한 간격으로 x2, x4에 대해서 과정이 반복된다.
 
