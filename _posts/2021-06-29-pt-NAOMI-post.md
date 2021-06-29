@@ -39,13 +39,13 @@ NAOMI 는 시공간 데이터의 multiresolution 구조를 이용하고, divide-
 
 최근의 연구들은 시퀀스 데이터에서 결측 패턴을 유연하게 학습하기 위해 깊은 생성 모델을 사용해서 제안 되었다. 그러나 존재하는 모든 deep generative imputaion 방법들은 autoregressive이다. 이전 타임 스텝의 값을 이용해서 현재의 타임 스탬프값을 모델링하고 결측 데이터를 순차적으로 impute한다. 그런 이유로 autoregressive 모델들은 복합 에러에 매우 민감하고 긴 범위의 시퀀스 모델링에 치명적일 수 있다. 우리는 우리의 실험에서 기존의 autoregressive 접근방법이 긴 범위의 imputation 작업에서 어려움을 격는 것을 확인했다.
 
-이 논문에서, 우리는 긴 범위의 시퀀스 imputation을 위한 새로운 non-autoregressive 접근을 소개한다. 오직 과거의 값들로 조절하는 것 대신, 우리는 과거의 미래 모두의 조건의 분포를 모델링 한다. 우리는 시공간적 시퀀스의 multiresolution 특징을 사용하고, 복잡한 의존성을  여러개의 resolution에서 더욱 간편하게 분해한다. 우리의 모델은 divide and conquer 전략을 사용하여 결측치를 지귀적으로 채운다. 우리의 방법은 일반적이고 다양한 학습 목적에 사용가능하다. 
+이 논문에서, 우리는 긴 범위의 시퀀스 imputation을 위한 새로운 non-autoregressive 접근을 소개한다. 오직 과거의 값들로 조절하는 것 대신, 우리는 과거의 미래 모두의 조건의 분포를 모델링 한다. 우리는 시공간적 시퀀스의 multiresolution 특징을 사용하고, 복잡한 의존성을  여러개의 resolution에서 더욱 간편하게 분해한다. 우리의 모델은 divide and conquer 전략을 사용하여 결측치를 재귀적으로 채운다. 우리의 방법은 일반적이고 다양한 학습 목적에 사용가능하다. 
 
 요약하면, 우리의 기여는 다음과 같다.
 
 - 우리는 긴 범위의 시공간적 시퀀스에서 결측값을 imputing할 수 있는 deep generative 모델의 새로운 non-autoregressive decoding 과정을 제안했다.
 - 우리는 분산을 줄이기 위해 fully differentiable generator를 갖는 generative adversarial imitaion learning을 사용한 adversarial training을 소개한다.
-- 우리는 교통정보, 빌보드, 농구 경로를 포함한 시퀀스 데이터셋에 대한  철처한 실험을 진행한다. 우리의 방법은 정확도에서 60%의 증가가 있었고, 주어진 임의의 결측 패턴에서 진짜 시퀀스를 생성했다.
+- 우리는 교통정보, 당구, 농구 경로를 포함한 시퀀스 데이터셋에 대한  철처한 실험을 진행한다. 우리의 방법은 정확도에서 60%의 증가가 있었고, 주어진 임의의 결측 패턴에서 진짜 시퀀스를 생성했다.
 
 &nbsp;
 
