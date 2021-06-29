@@ -8,13 +8,13 @@ categories: Paper Translate
 
 
 
-paper: https://arxiv.org/pdf/1805.10572.pdf
+paper: <https://arxiv.org/pdf/1805.10572.pdf>
 
-code: https://github.com/caow13/BRITS
+code: <https://github.com/caow13/BRITS>
 
 
 
-#### Abstract
+### Abstract
 
 **어떠한 가정도 필요없이** missing values를 바로 imputation하는 모델
 
@@ -36,7 +36,7 @@ code: https://github.com/caow13/BRITS
 
 
 
-#### Introduction
+### Introduction
 
 다변수 시계열 데이터는 결측치가 흔하기 때문에 imputation은 매우 중요하다.
 
@@ -57,7 +57,7 @@ code: https://github.com/caow13/BRITS
 
 
 
-#### Preliminary
+### Preliminary
 
 x,m,delta에 대해 설명
 
@@ -67,13 +67,15 @@ x는 데이터, m은 결측치인지 아닌지 여부, delta는 마지막 관측
 
 
 
-#### BRITS
+### BRITS
 
 먼저 같은 시간에 관측된 변수들끼리 서로 상관 관계가 없을 때
 
+&nbsp;
 
 
-#### Unidirectional Uncorrelated Recurrent Imputation (RITS-I)
+
+### Unidirectional Uncorrelated Recurrent Imputation (RITS-I)
 
 가장 단순한 경우, 우리는 t번째 time step에서 변수들이 상관관계가 없다고 가정할 수 있다.
 
@@ -87,7 +89,7 @@ t번째 step에서  만약 x_t가 실제로 관측 됐다면, 우리는 그것�
 
 x1~x10까지의 값들 중 x5,x6,x7이 missing일 때의 예시이다.
 
-![image-20210622112253095](2021-06-29-pt-brits-post.assets/image-20210622112253095.png)
+![image-20210622112253095](/assets/images/2021-06-29-pt-brits-post.assets/image-20210622112253095.png)
 
 각각의 time step에서 한칸 t-1 step의 값을 이용해서 t step의 값을 추정할 수 있다.
 
@@ -99,7 +101,7 @@ x1~x10까지의 값들 중 x5,x6,x7이 missing일 때의 예시이다.
 
 그래서 8번째 step에서는 5,6,7의 지연된 에러를 얻는다.
 
-
+&nbsp;
 
 **algorithm**
 
@@ -155,7 +157,7 @@ f<sub>out</sub>는 특정한 작업에 의존하는 fc layer나 softmax layer가
 
 만약 classification 없이 순수하게 imputation만 하고 싶다면 앞에 있는거만 loss로 계산하면 된다.
 
-
+&nbsp;
 
 
 
@@ -181,9 +183,11 @@ f<sub>out</sub>는 특정한 작업에 의존하는 fc layer나 softmax layer가
 
 지금까지 설명한게 RITS-I 다
 
+&nbsp;
 
 
-#### Bidirectional Uncorrelated Recurrent Imputation (BRITS-I)
+
+### Bidirectional Uncorrelated Recurrent Imputation (BRITS-I)
 
 RITS-I에서 결측치의 추정된 에러는 다음 관측이 있을때 까지 지연된다.
 
@@ -207,9 +211,13 @@ RITS-I에서 결측치의 추정된 에러는 다음 관측이 있을때 까지 
 
 t번째 step에서 최종 결과는 forward x와 backward x의 평균이다. 
 
+&nbsp;
 
 
-#### Correlated Recurrent Imputation (BRITS)
+
+
+
+### Correlated Recurrent Imputation (BRITS)
 
 RITS-I와 BRITS-I에서 같은 시간에 관측된 특징끼리 모두 상관이 없다고 가정했다. 하지만 몇몇의 경우 이것은 사실이 아니다. 
 
@@ -252,3 +260,4 @@ beta를 감마와 m을 고려하면서 학습하면 된다.
 ![image-20210622164807134](/assets/images/2021-06-29-pt-brits-post.assets/image-20210622164807134.png)
 
 최종적인 로스
+
