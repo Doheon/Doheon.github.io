@@ -12,7 +12,7 @@ code: <https://github.com/felixykliu/NAOMI>
 
 
 
-지금까지 방법들은 다 autoregressive다.
+길이가 긴 결측치를 보간하는 데에 특화된 모델
 
 device & conquer를 사용하여 다양한 간격으로 sequence를 보간하는 것이 특징.
 
