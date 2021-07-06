@@ -92,13 +92,13 @@ self-attention의 효율성을 증가시키기 위한 몇몇의 사전 연구들
 
 고정된 window size의 예측 설정에서, 우리는 인풋 X<sup>t</sup> = {x<sub>1</sub>, ..., x<sub>Lx</sub>}를 시간 t에서 가지고, 아웃풋은 거기에 상응하는 예측값인  Y<sup>t</sup> = {y<sub>1</sub>, ..., y<sub>Ly</sub>}을 가진다. LSTF 문제는 과거의 연구보다 아웃풋 길이 Ly가 더 길고, 특징의 차원은 단일 변수로 제한되지 않는다. (d<sub>y</sub>>=1)
 
-#### Encoder-decoder architecture
+### Encoder-decoder architecture
 
 많은 유명한 모델들은 인풋 표현 X<sup>t</sup>를 hidden state 표현 H<sup>t</sup>로 encode하고, 아웃풋 표현 Y<sup>t</sup>를 H<sup>t</sup>에서 decode한다. 추론 과정은  "dynamic decoding"이라고 불리는 step-by-step과정을 포함한다. decoer가 새로운 hidden state h<sub>k+1</sub> 을 이전의 상태인 h<sub>k</sub>과 k번째 아웃풋으로 계산하고 (k+1) 번째 시퀀스 y<sub>k+1</sub>을 예측한다.
 
 
 
-#### Input Representation
+### Input Representation
 
 시계열 인풋의 전역  positional context 와 지역 temporal context를 개선시키기 위해 시간균일한 인풋 표현이 주어진다. 좀더 자세한 설명을 Appendix B 에 넣어놓았다.
 
@@ -124,7 +124,7 @@ right: 디코더는 목표 부분이 0으로 패딩되어 있는 긴 시퀀스 �
 
 
 
-#### Efficient Self-attention Mechanism
+### Efficient Self-attention Mechanism
 
 canonical self-attention은 튜플 인풋들(query, key, value) 에 기반하여 정의 되어 있다. 이는 Softmax(QK<sup>T</sup>/root(d)) V 와 같은 scaled dot-product를 수행한다.  self-attention 메커니즘에 대해 더 자세히 설명하면, q<sub>i</sub>, k<sub>i</sub>, v<sub>i</sub>를 각각 Q,K,V의 i 번째 행이라고 하자. 아래의 식에 의해 i번째 query의 어텐션은 kernel smoother로 정의 된다.
 
@@ -206,7 +206,7 @@ L<sub>Q</sub> = L<sub>K</sub> = L 인경우 총 ProbSparse self-attention의 시
 
 
 
-#### Encoder: Allowing for ProcessingLonger Sequential Inputs under the Memory Usage Limitation
+### Encoder: Allowing for ProcessingLonger Sequential Inputs under the Memory Usage Limitation
 
 인코더는 긴 시퀀셜 인풋의 굳건한 긴 범위의 의존성을 추출하도록 설계되었다. input representation후에 , t 번째 시퀀스 인풋 X<sup>t</sup> 는 행렬 X<sup>t</sup><sub>en</sub>의 모양으로 된다. 우리의 인코더의 그림은 아래와 같다.
 
@@ -250,7 +250,7 @@ distilling 작업의 굳건함을 증가시키기 우해, 우리는 main stack�
 
 
 
-#### Decoder: Generating Long Sequential Outputs Through One Forward Procedure
+### Decoder: Generating Long Sequential Outputs Through One Forward Procedure
 
 우리는 표준의 디코더 구조를 사용했다, 그리고 그것은 두개의 동일한 multihead attention layers의 스택으로 구성되어 있다. 그러나 긴 예측에서의 급격한 속도 저하를 완화시키기 위해 생성적인 추론이 사용 된다.  우리는 아래의 벡터로 디코더의 입력으로 넣어주었다.
 
