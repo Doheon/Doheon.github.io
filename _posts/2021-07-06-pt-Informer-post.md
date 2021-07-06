@@ -132,9 +132,9 @@ canonical self-attention은 튜플 인풋들(query, key, value) 에 기반하여
 
 
 
-self-attention은 확률 p(kj|qi)를 계산하는 것을 기반으로 values와 획득한 아웃풋들을 조합한다. 이것은 2차의 dot-product 계산 횟수가 필요하고 O(L<sub>Q</sub>L<sub>K</sub>)의 메모리 사용량이 필요하다. 이것은 예측 용량을 향상시킬 때의 주된 문제점이다.
+self-attention은 확률 p(kj\|qi)를 계산하는 것을 기반으로 values와 획득한 아웃풋들을 조합한다. 이것은 2차의 dot-product 계산 횟수가 필요하고 O(L<sub>Q</sub>L<sub>K</sub>)의 메모리 사용량이 필요하다. 이것은 예측 용량을 향상시킬 때의 주된 문제점이다.
 
-일부 과거의 시도들은 self-attention 확률의 분포가 잠재적인 희소성을 가지고 있다는 것을 보여주었다. 그리고 그것들은 성능을 유지하면서 p(kj|qi)에 대한 "선택적인" 카운팅 전략을 설계했다. (희소성을 가지고 있기 때문에 중요한 것만 선택해도 된다.)
+일부 과거의 시도들은 self-attention 확률의 분포가 잠재적인 희소성을 가지고 있다는 것을 보여주었다. 그리고 그것들은 성능을 유지하면서 p(kj\|qi)에 대한 "선택적인" 카운팅 전략을 설계했다. (희소성을 가지고 있기 때문에 중요한 것만 선택해도 된다.)
 
 Sparse Transformer는 row output과 column input을 포함하고, 희소성은 분리된 공간의 상관관계에서 발생한다.  LogSparse Transformer 는 self-attention의 순환하는 패턴에 주목했고 각 셀이 지수함수의 step size로 이전 셀과 연결되도록 했다. Longformer는 더 복잡한 희소 형태까지 이전의 두개의 연구를 확장했다.
 
@@ -150,7 +150,7 @@ Sparse Transformer는 row output과 column input을 포함하고, 희소성은 �
 
 **Query Sparsity Measurement**
 
-(1)번 식에서 모든 key에 대한 i번째 query의 attention은 확률 p(kj|qi)로 정의 되고 아웃풋은 v와 그것의 구성이다.  많은 dot-product pairs 는 uniform distribution에서 벗어나 해당하는 query의 attention probability 분포를 따른다. 만약 p(kj|qi)가 uniform distribution q(kj|qi) = 1/Lk 와 가까워 진다면 self-attention은 values V의 사소한 합이 되고, residential input으로 된다. 
+(1)번 식에서 모든 key에 대한 i번째 query의 attention은 확률 p(kj\|qi)로 정의 되고 아웃풋은 v와 그것의 구성이다.  많은 dot-product pairs 는 uniform distribution에서 벗어나 해당하는 query의 attention probability 분포를 따른다. 만약 p(kj\|qi)가 uniform distribution q(kj\|qi) = 1/Lk 와 가까워 진다면 self-attention은 values V의 사소한 합이 되고, residential input으로 된다. 
 
 당연히도 분포 p와 q의 "유사성"은 "중요한" query가 뭔지 구분하는데 사용될 수 있다. 우리는 "유사성"을 Kullback-Leibler divergence로 측정한다. Kullback-Leibler divergence는 아래와 같다.
 
