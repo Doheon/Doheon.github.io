@@ -3,7 +3,7 @@ title: "[인공지능 데브코스] 4주차 day1 - flask"
 toc: true
 toc_sticky: true
 date: 2020-12-21
-categories: TIL
+categories: web
 ---
 
 ## 12월 21일 월   

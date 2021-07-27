@@ -3,7 +3,7 @@ title: "[인공지능 데브코스] 4주차 day4 - django2"
 toc: true
 toc_sticky: true
 date: 2020-12-24
-categories: TIL
+categories: web
 ---
 
 ## 12월 23일 목   

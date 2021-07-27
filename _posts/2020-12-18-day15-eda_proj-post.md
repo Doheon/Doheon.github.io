@@ -3,7 +3,7 @@ title: "[인공지능 데브코스] 3주차 day5 - EDA project"
 toc: true
 toc_sticky: true
 date: 2020-12-18
-categories: TIL
+categories: data
 ---
 
 ## 12월 18일 금   

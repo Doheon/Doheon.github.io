@@ -3,7 +3,7 @@ title: "[인공지능 데브코스] 1주차 day1 - 자료구조(1)"
 toc: true
 toc_sticky: true
 date: 2020-11-30
-categories: TIL 자료구조
+categories: 자료구조
 ---
 ## 11월 30일 월  
 
@@ -59,12 +59,10 @@ list.index(val) #O(n)
 
 **리스트의 정렬**  
 - `sorted`: 내장함수, 정렬된 새로운 리스트를 얻어냄  
-  
 ```python
 nlist = sorted(list, reverse = True)
 ```
 - `sort`: 리스트의 메서드, 해당리스트를 정렬  
-  
 ```python
 list.sort(reverse = True)
 ```
