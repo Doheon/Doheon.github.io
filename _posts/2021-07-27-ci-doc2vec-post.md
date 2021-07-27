@@ -8,13 +8,17 @@ categories: Code-Implementation NLP
 
 sentencepiece와 gensim 모듈의 Doc2Vec를 사용해서 문장을 임베딩하고 그 결과에 pytorch를 사용한 classifier를 사용하여 뉴스 데이터의 카테고리를 분류하는 task를 수행해 보았다.
 
+Code: <https://github.com/Doheon/NewsClassification-Doc2Vec>
+
+&nbsp;
+
 
 
 사용한 데이터셋은 아래와 같다.
 
 Dataset: <http://ling.snu.ac.kr/class/cl_under1801/FinalProject.htm>
 
-
+&nbsp;
 
 
 
@@ -33,7 +37,7 @@ import os
 
 단어는 단어 단위로 나누지 않고 sentence piece를 이용한 sub token 단위로 토큰화 해서 사용한다.
 
-
+&nbsp;
 
 
 
@@ -76,7 +80,7 @@ print(len(dataset_train), len(dataset_test))
 
 각 카테고리당 200개의 데이터 중 170개를 train set, 30개를 test set으로 사용한다.
 
-
+&nbsp;
 
 
 
@@ -96,7 +100,7 @@ f.close()
 
 모든 문장을 하나의 파일로 합친 후 allsentence.txt 라는 파일로 저장한다.
 
-
+&nbsp;
 
 
 
@@ -118,7 +122,7 @@ spm.SentencePieceTrainer.train(
 
 생성된 텍스트 파일을 사용해서 sentence piece를 학습 시킨다.
 
-
+&nbsp;
 
 
 
@@ -145,7 +149,7 @@ print(ids)
 
 학습 결과 subtoken 단위로 잘 토큰화 되는 것을 확인 했다.
 
-
+&nbsp;
 
 
 
@@ -158,7 +162,7 @@ with trange(len(dataset_all)) as tr:
 
 학습된 sentence piece를 사용하여 모든 문장을 토큰화 한하고 새로운 list에 저장한다.
 
-
+&nbsp;
 
 
 
@@ -177,7 +181,7 @@ doc2vec_corpus = Doc2VecCorpus()
 
 doc2vec를 학습시킬 corpus로 Doc2VecCorpus라는 class를 선언한다.
 
-
+&nbsp;
 
 
 
@@ -188,7 +192,7 @@ doc2vec_model = Doc2Vec(documents = doc2vec_corpus,dm=2,  vector_size=embed_num,
 
 생성한 corpus를 이용하여 128차원의 임베딩으로 Doc2vec model을 학습 시킨다.
 
-
+&nbsp;
 
 
 
@@ -233,7 +237,7 @@ class SentenceDataset(Dataset):
 
 torch의 Dataset을 사용하여 문장의 임베딩과 라벨을 가지고 있는 Dataset class를 선언한다.
 
-
+&nbsp;
 
 
 
@@ -245,7 +249,7 @@ data_test = SentenceDataset(dataset_test, vocab.encode_as_pieces,doc2vec_model, 
 
 선언한 SentenceDataset을 이용하여 train, test dataset을 생성한다.
 
-
+&nbsp;
 
 
 
@@ -257,7 +261,7 @@ test_dataloader = DataLoader(data_test, batch_size=batch_size, num_workers=5, sh
 
 batch 학습을 위해 생성한 dataset을 가지고 Dataloader를 생성한다.
 
-
+&nbsp;
 
 
 
@@ -282,7 +286,7 @@ class Classifier(nn.Module):
 
 FC layer를 두개를 가지고 있는 multiclass classifier를 선언한다. 문장 임베딩을 받아서 바로 분류하는 간단한 모델을 사용했다.
 
-
+&nbsp;
 
 
 
@@ -295,7 +299,7 @@ def calc_accuracy(X,Y):
 
 훈련중 정확도를 계산할 함수를 선언한다. 가장 큰 값을 가지고 있는 index가 label과 일치하는지 확인한다.
 
-
+&nbsp;
 
 
 
@@ -341,6 +345,8 @@ with trange(epochs) as tr:
 
 optimizer는 Adam optimizer를 사용했고, multi class classification이기 때문에 loss function 으로는 CrossEntropyLoss를 사용했다.
 
+&nbsp;
+
 
 
 최종 test accuracy는 0.81이 나왔다.
@@ -349,7 +355,7 @@ RNN없이 간단하게 임베딩과 fc layer만 사용한 것 치고는 생각�
 
 생각보다 Doc2Vec의 임베딩 능력이 좋은 것 같다고 느껴졌다.
 
-
+&nbsp;
 
 
 
@@ -384,6 +390,8 @@ def test_model(seq, model):
 
 직접 타이핑한 문장의 카테고리를 바로 출력해주는 함수를 선언했다.
 
+&nbsp;
+
 
 
 ```python
@@ -400,9 +408,5 @@ test_model("신형 아이패드 프로에 m1칩 탑재 예정", model)
 
 아마 임베딩을 학습 할 때는 긴 문장으로 했지만 테스트의 문장은 길이가 짧아서 별로 좋지 않은 결과가 나온 것으로 예상된다.
 
-
-
-## Result
-
-**정확도: 0.81**
+&nbsp;
 

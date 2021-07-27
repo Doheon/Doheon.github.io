@@ -1,13 +1,15 @@
 ---
 title: "[코드구현] ChatBot - Transformer"
 toc_sticky: true
-date: 2021-07-28
+date: 2021-07-29
 categories: Code-Implementation NLP
 ---
 
 오픈된 데이터와 pytorch의 nn.Transformer를 이용하여 간단한 챗봇을 제작해보았다.  
 
 아래의 강의를 참고하였으며 여기서 Tensorflow로 구현된 것을 참고하여 Pytorch로 다시 구현했다.
+
+Code: <https://github.com/Doheon/Chatbot-Transformer>
 
 
 
@@ -62,6 +64,8 @@ for sentence in train_data['A']:
 
 데이터를 list에 저장한다. !?. 와 같은 기호들은 공백을 추가해 준다.
 
+&nbsp;
+
 
 
 ## Sentence Piece 학습 및 인코딩
@@ -77,6 +81,8 @@ with open('all.txt', 'w', encoding='utf8') as f:
 ```
 
 먼저 모든 문장을 하나의 txt 파일로 저장한다.
+
+&nbsp;
 
 
 
@@ -97,7 +103,7 @@ spm.SentencePieceTrainer.train(
 
 저장된 텍스트 파일을 이용하여 8000개의 vocab size를 가지고 사용자 지정 토큰 7개를 추가로 가지고 있는sentence piece를 학습시킨다.
 
-
+&nbsp;
 
 
 
@@ -122,7 +128,7 @@ print(ids)
 
 그 결과 학습이 잘 진행된 것을 확인 할 수 있다.
 
-
+&nbsp;
 
 
 
@@ -154,7 +160,7 @@ def tokenize_and_filter(inputs, outputs):
 
 학습된 sentence piece를 이용하여 주어진 문장을 정수로 인코딩하는 함수를 선언한다. 문장의 처음과 끝에는 sentence piece를 학습 시킬 때 따로 선언했던 START_TOKEN과 END_TOKEN의 index를 붙여준다.
 
-
+&nbsp;
 
 
 
@@ -175,7 +181,7 @@ print(answers_encode[0])
 
 그 결과 잘 인코딩 되어 저장된 것을 확인할 수 있다.
 
-
+&nbsp;
 
 
 
@@ -212,7 +218,7 @@ dataset은 3개의 값으로 이루어지도록 선언한다. 첫번째 값은 �
 
 생성된 dataset을 이용하여 64 의batch size를 가지고 있는 dataloader를 생성한다.
 
-
+&nbsp;
 
 
 
@@ -298,7 +304,7 @@ nn.Transformer를 사용했고, nn.Transformer에는 positional encoding과 Embe
 
 입력한 텐서와 같은 크기의 attention mask를 생성해주는 gen_attention_mask 함수도 선언했다.
 
-
+&nbsp;
 
 
 
@@ -316,6 +322,8 @@ model = TFModel(vocab_size+7, 256, 8, 512, 2, 0.2).to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 ```
+
+&nbsp;
 
 
 
@@ -369,7 +377,7 @@ epoch: 30 | loss: 0.33466512319203967
 
 30번의 epoch로 학습을 진행했다.
 
-
+&nbsp;
 
 
 
@@ -425,6 +433,8 @@ def predict(sentence):
     return predicted_sentence
 ```
 
+&nbsp;
+
 
 
 ```python
@@ -435,6 +445,8 @@ result = predict("놀고싶다")
 Input: 놀고싶다
 Output: 저도요 ! ! !
 ```
+
+&nbsp;
 
 
 
@@ -447,6 +459,8 @@ Input: 배고파
 Output: 얼른 뭐라도 드세요 .
 ```
 
+&nbsp;
+
 
 
 ```python
@@ -458,7 +472,7 @@ Input: 고민 상담 해줘
 Output: 네 말씀하세요 .
 ```
 
-
+&nbsp;
 
 
 
@@ -470,6 +484,8 @@ result = predict("난 뭘 해야 할까?")
 Input: 난 뭘 해야 할까?
 Output: 가장 중요한 것 같아요 .
 ```
+
+&nbsp;
 
 
 

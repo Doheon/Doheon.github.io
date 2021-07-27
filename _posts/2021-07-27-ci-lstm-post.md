@@ -10,11 +10,15 @@ categories: Code-Implementation NLP
 
 토큰화와 임베딩을 다양한 방법으로 해보면서 최적의 방법을 찾아보았다.
 
+Code: <https://github.com/Doheon/NewsClassification-LSTM>
+
 
 
 사용한 데이터셋은 아래와 같다.
 
 Dataset: <http://ling.snu.ac.kr/class/cl_under1801/FinalProject.htm>
+
+&nbsp;
 
 
 
@@ -31,7 +35,7 @@ import os
 
 단어 임베딩은 FastText를 이용해 진행하였고, 토큰화는 sentence piece와 형태소 분석 두가지 방법으로 진행하였다.
 
-
+&nbsp;
 
 
 
@@ -72,6 +76,8 @@ print(len(dataset_train), len(dataset_test))
 
 모든 데이터는 dataset_all이라는 list에 따로 저장한다.
 
+&nbsp;
+
 
 
 ## Tokenize
@@ -96,6 +102,8 @@ with trange(len(dataset_all)) as tr:
 
 토큰화된 모든 문장들을 list에 저장한다.
 
+&nbsp;
+
 
 
 ```python
@@ -106,6 +114,8 @@ embedding.save("fasttext_morph.model")
 ```
 
 토큰화된 결과를 이용하여 FastText를 학습시킨다.
+
+&nbsp;
 
 
 
@@ -130,6 +140,8 @@ model_morphs.wv.most_similar("국회의원")
 
 학습 결과 어느정도 훈련이 잘 진행된 것을 확인 할 수 있다.
 
+&nbsp;
+
 
 
 ### Sentence Piece
@@ -145,6 +157,8 @@ f.close()
 ```
 
 일단 모든 데이터들을 하나의 텍스트 파일에 저장한다.
+
+&nbsp;
 
 
 
@@ -164,6 +178,8 @@ spm.SentencePieceTrainer.train(
 ```
 
 생성된 텍스트 파일을 이용하여 sentence piece를 학습시킨다.
+
+&nbsp;
 
 
 
@@ -187,7 +203,7 @@ print(ids)
 
 확인해본 결과 토큰화가 잘 된 것을 확인할 수 있다.
 
-
+&nbsp;
 
 
 
@@ -202,7 +218,7 @@ with trange(len(dataset_all)) as tr:
 
 모든 문장들을 학습된 sentence piece를 이용하여 토큰화 하고 list에 저장한다.
 
-
+&nbsp;
 
 
 
@@ -214,6 +230,8 @@ embedding.save("fasttext_sp.model")
 ```
 
 저장된 list를 이용하여 FastText를 학습시킨다.
+
+&nbsp;
 
 
 
@@ -238,7 +256,7 @@ model_morphs.wv.most_similar("국회의원")
 
 형태소 분석때와는 다르지만 어느정도 비슷한 단어가 올라온 것을 확인할 수 있다.
 
-
+&nbsp;
 
 
 
@@ -260,6 +278,8 @@ device = torch.device("cuda")
 ```
 
 필요한 모듈들을 import한다.
+
+&nbsp;
 
 
 
@@ -287,7 +307,7 @@ class SentenceDataset(Dataset):
 
 tokenizer와 FastText Model을 넣어주면 그에 맞게 단어들을 임베딩해주는 Dataset을 선언한다.
 
-
+&nbsp;
 
 
 
@@ -305,7 +325,7 @@ morphs_test = SentenceDataset(dataset_test, hannanum.morphs,model_morphs.wv, max
 
 sentence piece와 형태소 분석 두 가지의 방법으로 데이터 셋을 생성한다.
 
-
+&nbsp;
 
 
 
@@ -320,6 +340,8 @@ test_dataloader = torch.utils.data.DataLoader(morphs_test, batch_size=batch_size
 생성한 데이터 셋으로 DataLoader를 생성한다.
 
 일단은 sentence piece Dataset을 사용하여 DataLoader를 
+
+&nbsp;
 
 
 
@@ -357,7 +379,7 @@ LSTM layer를 거친 후 LSTM layer의 마지막 output 값이 FC layer를 두�
 
 최종적으로 num_classes만큼의 결과가 나오도록 FC layer를 생성해 준다.
 
-
+&nbsp;
 
 
 
@@ -371,6 +393,8 @@ def calc_accuracy(X,Y):
 ```
 
 정확도를 측정할 수 있도록 하는 함수를 선언한다.
+
+&nbsp;
 
 
 
@@ -421,6 +445,8 @@ CrossEntropyLoss를 loss function으로 사용하여 훈련을 진행한다.
 
 test accuarcy는 0.723이 나왔다.
 
+&nbsp;
+
 
 
 ## Hyperparameter Tuning
@@ -450,7 +476,7 @@ test accuarcy는 0.723이 나왔다.
 
 임베딩방법은 FastText와 torch의 nn.Embedding로 두가지 방법으로 진행해 보았다. nn.embedding을 사용하면 trainacc만 높게나오는 오버피팅이 되는 경향이 있어서 FastText를 사용한 임베딩 방법이 더 좋은 성능을 보였다.
 
-
+&nbsp;
 
 
 
@@ -489,6 +515,8 @@ def test_model(seq, model, tokenizer, fasttextmodel):
 
 직접 문장을 넣었을 때 결과를 바로 확인 할 수 있도록 테스트를 할 수 있는 함수를 선언한다.
 
+&nbsp;
+
 
 
 ```python
@@ -502,3 +530,5 @@ test_model("신형 아이패드 프로에 m1칩 탑재 예정", lstm, hannanum.m
 ```
 
 직접 테스트해본 결과 어느정도는 좋은 성능을 보였지만 64길이로 학습을 시키고 짧은 길이로 테스트를 해서인지 test accuracy만큼 좋은 성능을 가지고 있진 않았다.
+
+&nbsp;

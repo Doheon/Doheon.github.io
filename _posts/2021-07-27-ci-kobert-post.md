@@ -8,6 +8,10 @@ categories: Code-Implementation NLP
 
 한국어에 대해 pre-train 되어 있는 BERT 모델인 KoBERT를 이용하여 뉴스 데이터의 카테고리를 분류하는 task를 직접 구현해 보았다.
 
+Code: <https://github.com/Doheon/NewsClassification-KoBERT>
+
+&nbsp;
+
 
 
 사용한 모델과 데이터셋의 출처는 아래와 같다.
@@ -19,6 +23,8 @@ Dataset: <http://ling.snu.ac.kr/class/cl_under1801/FinalProject.htm>
 
 
 데이터셋은 8개의 카테고리가 있고 각 카테고리당 200개의 뉴스 기사가 존재한다.
+
+&nbsp;
 
 
 
@@ -48,7 +54,7 @@ from transformers.optimization import get_cosine_schedule_with_warmup
 
 
 
-
+&nbsp;
 
 ```python
 device = torch.device("cuda:0")
@@ -58,6 +64,8 @@ bertmodel, vocab = get_pytorch_kobert_model()
 ```
 
 사용할 deivce를 설정하고 pretrain 된 bert 모델을 불러온다.
+
+&nbsp;
 
 
 
@@ -96,7 +104,7 @@ print(len(dataset_train), len(dataset_test))
 
 
 
-
+&nbsp;
 
 
 
@@ -111,7 +119,7 @@ dataset_train[0]
 
 train set의 첫번째 데이터를 보면 위와 같다.
 
-
+&nbsp;
 
 
 
@@ -124,7 +132,7 @@ tok = nlp.data.BERTSPTokenizer(tokenizer, vocab, lower=False)
 
 가져온 vocab을 이용하여 토크나이저를 선언한다.
 
-
+&nbsp;
 
 
 
@@ -147,7 +155,7 @@ class BERTDataset(Dataset):
 
 학습할 때 사용할 데이터셋 클래스를 선언한다.
 
-
+&nbsp;
 
 
 
@@ -163,7 +171,7 @@ learning_rate =  5e-5
 
 파라미터를 세팅한다. 최대길이는 64로 설정했다. 
 
-
+&nbsp;
 
 
 
@@ -177,7 +185,7 @@ test_dataloader = torch.utils.data.DataLoader(data_test, batch_size=batch_size, 
 
 Dataset을 선언하고, Dataloader를 생성한다.
 
-
+&nbsp;
 
 
 
@@ -217,7 +225,7 @@ class BERTClassifier(nn.Module):
 
 분류에 사용할 모델을 만들어준다. 카테고리가 8개 이므로 num_classes는 8을 default로 설정한다.
 
-
+&nbsp;
 
 
 
@@ -242,7 +250,7 @@ scheduler = get_cosine_schedule_with_warmup(optimizer, num_warmup_steps=warmup_s
 
 모델, optimizer, loss function 등 학습에 필요한 것들을 선언한다.
 
-
+&nbsp;
 
 
 
@@ -255,7 +263,7 @@ def calc_accuracy(X,Y):
 
 훈련중 정확도를 계산하기 위해 정확도를 계산하는 함수를 선언한다.
 
-
+&nbsp;
 
 
 
@@ -318,6 +326,8 @@ epoch 10 test acc 0.8684895833333334
 
 test set에 대한 정확도는 약 86.8%가 나왔다.  
 
+&nbsp;
+
 
 
 ## Test
@@ -358,7 +368,7 @@ testModel(model, "신형 아이패드 프로에 m1칩 탑재 예정")
 
 직접 입력한 문장에 대해 좋은 성능을 보이는 것을 확인 했다.
 
-
+&nbsp;
 
 
 
