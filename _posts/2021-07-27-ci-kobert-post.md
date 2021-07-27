@@ -1,5 +1,5 @@
 ---
-title: "[코드구현] Sentence Classification - KoBERT
+title: "[코드구현] Sentence Classification - KoBERT"
 toc: true
 toc_sticky: true
 date: 2021-07-27

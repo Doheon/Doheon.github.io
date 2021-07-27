@@ -1,5 +1,5 @@
 ---
-title: "[코드구현] Sentence Classification - Doc2Vec
+title: "[코드구현] Sentence Classification - Doc2Vec"
 toc: true
 toc_sticky: true
 date: 2021-07-27
