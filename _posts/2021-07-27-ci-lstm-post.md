@@ -339,7 +339,7 @@ test_dataloader = torch.utils.data.DataLoader(morphs_test, batch_size=batch_size
 
 생성한 데이터 셋으로 DataLoader를 생성한다.
 
-일단은 sentence piece Dataset을 사용하여 DataLoader를 
+일단은 형태소 분석 Dataset을 사용하여 DataLoader를 생성한다.
 
 &nbsp;
 
