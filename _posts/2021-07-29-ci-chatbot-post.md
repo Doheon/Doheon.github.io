@@ -1,5 +1,6 @@
 ---
 title: "[코드구현] ChatBot - Transformer"
+toc: true
 toc_sticky: true
 date: 2021-07-29
 categories: Code-Implementation NLP
@@ -214,7 +215,7 @@ dataset = SequenceDataset(questions_encode, answers_encode)
 dataloader = DataLoader(dataset, shuffle=True, batch_size=BATCH_SIZE)
 ```
 
-dataset은 3개의 값으로 이루어지도록 선언한다. 첫번째 값은 주어진 질문이고, 두번째 값은 디코더의 입력으로 마지막 토큰값이 제거된 대답이고, 마지막 값은 첫 토큰갑시 제거된 결과이다.
+dataset은 3개의 값으로 이루어지도록 선언한다. 첫번째 값은 주어진 질문이고, 두번째 값은 디코더의 입력으로 마지막 토큰값이 제거된 대답이고, 마지막 값은 첫 토큰값이 제거된 결과이다.
 
 생성된 dataset을 이용하여 64 의batch size를 가지고 있는 dataloader를 생성한다.
 
