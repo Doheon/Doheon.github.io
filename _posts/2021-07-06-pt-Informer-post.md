@@ -12,6 +12,18 @@ paper: <https://arxiv.org/pdf/2012.07436v3.pdf>
 
 code: <https://github.com/zhouhaoyi/Informer2020>
 
+&nbsp;
+
+
+
+code implement
+
+<https://doheon.github.io/code-implementation/time-series/ci-5.informer-post/>
+
+&nbsp;
+
+
+
 
 
 긴 길이의 시계열 예측에 특화된 효율적인 트랜스 포머 기반 모델
