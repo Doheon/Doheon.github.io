@@ -1,5 +1,5 @@
 ---
-title: "[코드구현] Sentence Classification - LSTM"
+title: "[코드구현] Sentence Classification - FastText+LSTM"
 toc: true
 toc_sticky: true
 date: 2021-07-27
