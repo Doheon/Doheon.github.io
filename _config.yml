@@ -97,7 +97,7 @@ author:
   name             : "DH"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Studying AI"
-  location         : "South Korea"
+  location         : #"South Korea"
   email            : "andh9696@gmail.com"
   links:
     - label: "Email"
