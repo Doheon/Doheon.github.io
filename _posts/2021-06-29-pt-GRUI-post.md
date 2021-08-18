@@ -1,5 +1,5 @@
 ---
-title: "[논문번역] GRUI-GAN: Multivariate Time Series Imputation with Generative Adversarial Networks (2018)"
+title: "[논문번역] GRUI-GAN: Multivariate Time Series Imputation with Generative Adversarial Networks (NeurIPS 2018)"
 toc: true
 toc_sticky: true
 date: 2021-06-29

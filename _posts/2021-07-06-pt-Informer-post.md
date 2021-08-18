@@ -1,5 +1,5 @@
 ---
-title: "[논문번역] Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting (2020)"
+title: "[논문번역] Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting (AAAI 2021)"
 toc: true
 toc_sticky: true
 date: 2021-07-06

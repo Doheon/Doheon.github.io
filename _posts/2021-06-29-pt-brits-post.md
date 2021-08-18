@@ -1,5 +1,5 @@
 ---
-title: "[논문번역] BRITS: bidirectional recurrent imputation for time series (2018)"
+title: "[논문번역] BRITS: bidirectional recurrent imputation for time series (NeurIPS 2018)"
 toc: true
 toc_sticky: true
 date: 2021-06-29

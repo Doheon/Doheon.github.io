@@ -1,5 +1,5 @@
 ---
-title: "[논문번역] NAOMI: Non-AutOregressive Multiresolution sequence Imputation (2019)"
+title: "[논문번역] NAOMI: Non-AutOregressive Multiresolution sequence Imputation (NeurIPS 2019)"
 toc: true
 toc_sticky: true
 date: 2021-06-29
