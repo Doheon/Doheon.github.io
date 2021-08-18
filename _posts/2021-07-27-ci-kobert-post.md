@@ -6,9 +6,7 @@ date: 2021-07-27
 categories: Code-Implementation NLP
 ---
 
-**3가지 방법의 Sentence Classification 성능비교**
-
-<https://doheon.github.io/code-implementation/nlp/ci-sc-post/>
+[**Sentence Classification 프로젝트**](https://doheon.github.io/code-implementation/nlp/ci-sc-post/)
 
 &nbsp;
 
@@ -16,7 +14,7 @@ categories: Code-Implementation NLP
 
 한국어에 대해 pre-train 되어 있는 BERT 모델인 KoBERT를 이용하여 뉴스 데이터의 카테고리를 분류하는 task를 직접 구현해 보았다.
 
-Code: <https://github.com/Doheon/NewsClassification-KoBERT>
+[Code](https://github.com/Doheon/NewsClassification-KoBERT)
 
 &nbsp;
 
@@ -24,9 +22,9 @@ Code: <https://github.com/Doheon/NewsClassification-KoBERT>
 
 사용한 모델과 데이터셋의 출처는 아래와 같다.
 
-KoBERT: <https://github.com/SKTBrain/KoBERT>
+[KoBERT github](https://github.com/SKTBrain/KoBERT)
 
-Dataset: <http://ling.snu.ac.kr/class/cl_under1801/FinalProject.htm>
+[Dataset](http://ling.snu.ac.kr/class/cl_under1801/FinalProject.htm)
 
 
 

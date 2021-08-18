@@ -6,9 +6,7 @@ date: 2021-07-27
 categories: Code-Implementation NLP
 ---
 
-**3가지 방법의 Sentence Classification 성능비교**
-
-<https://doheon.github.io/code-implementation/nlp/ci-sc-post/>
+[**Sentence Classification 프로젝트**](https://doheon.github.io/code-implementation/nlp/ci-sc-post/)
 
 &nbsp;
 
@@ -18,13 +16,13 @@ categories: Code-Implementation NLP
 
 토큰화와 임베딩을 다양한 방법으로 해보면서 최적의 방법을 찾아보았다.
 
-Code: <https://github.com/Doheon/NewsClassification-LSTM>
+[Code](https://github.com/Doheon/NewsClassification-LSTM)
 
 
 
 사용한 데이터셋은 아래와 같다.
 
-Dataset: <http://ling.snu.ac.kr/class/cl_under1801/FinalProject.htm>
+[Dataset](http://ling.snu.ac.kr/class/cl_under1801/FinalProject.htm)
 
 &nbsp;
 
