@@ -6,6 +6,14 @@ date: 2021-07-27
 categories: Code-Implementation NLP
 ---
 
+**3가지 방법의 Sentence Classification 성능비교**
+
+<https://doheon.github.io/code-implementation/nlp/ci-sc-post/>
+
+&nbsp;
+
+
+
 뉴스의 카테고리를 분류하는 작업을 토큰화, 단어 임베딩을 거친 후에 LSTM과 FC layer를 사용하는 방법으로 수행해 보았다.
 
 토큰화와 임베딩을 다양한 방법으로 해보면서 최적의 방법을 찾아보았다.

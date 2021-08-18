@@ -6,6 +6,14 @@ date: 2021-07-27
 categories: Code-Implementation NLP
 ---
 
+**3가지 방법의 Sentence Classification 성능비교**
+
+<https://doheon.github.io/code-implementation/nlp/ci-sc-post/>
+
+&nbsp;
+
+
+
 sentencepiece와 gensim 모듈의 Doc2Vec를 사용해서 문장을 임베딩하고 그 결과에 pytorch를 사용한 classifier를 사용하여 뉴스 데이터의 카테고리를 분류하는 task를 수행해 보았다.
 
 Code: <https://github.com/Doheon/NewsClassification-Doc2Vec>
