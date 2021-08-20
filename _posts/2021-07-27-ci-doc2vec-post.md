@@ -6,7 +6,7 @@ date: 2021-07-27
 categories: 코드구현 NLP
 ---
 
-[**Sentence Classification 프로젝트**](https://doheon.github.io/code-implementation/nlp/ci-sc-post/)
+[**Sentence Classification 프로젝트**](https://doheon.github.io/%EC%84%B1%EB%8A%A5%EB%B9%84%EA%B5%90/nlp/ci-sc-post/)
 
 &nbsp;
 
