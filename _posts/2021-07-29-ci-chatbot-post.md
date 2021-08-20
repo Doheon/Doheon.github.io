@@ -3,7 +3,7 @@ title: "[코드구현] ChatBot - Transformer"
 toc: true
 toc_sticky: true
 date: 2021-07-29
-categories: Code-Implementation NLP
+categories: 코드구현 NLP
 ---
 
 오픈된 데이터와 pytorch의 nn.Transformer를 이용하여 간단한 챗봇을 제작해보았다.  

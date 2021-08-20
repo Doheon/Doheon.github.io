@@ -3,7 +3,7 @@ title: "[논문번역] GRUI-GAN: Multivariate Time Series Imputation with Genera
 toc: true
 toc_sticky: true
 date: 2021-06-29
-categories: Paper-Translate
+categories: 논문번역 Time-Series
 ---
 
 paper: <https://arxiv.org/ftp/arxiv/papers/2009/2009.08900.pdf>

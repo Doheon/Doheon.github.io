@@ -3,7 +3,7 @@ title: "[코드구현] Sentence Classification - Doc2Vec"
 toc: true
 toc_sticky: true
 date: 2021-07-27
-categories: Code-Implementation NLP
+categories: 코드구현 NLP
 ---
 
 [**Sentence Classification 프로젝트**](https://doheon.github.io/code-implementation/nlp/ci-sc-post/)

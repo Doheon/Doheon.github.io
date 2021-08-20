@@ -3,7 +3,7 @@ title: "[논문번역] NAOMI: Non-AutOregressive Multiresolution sequence Imputa
 toc: true
 toc_sticky: true
 date: 2021-06-29
-categories: Paper-Translate
+categories: 논문번역 Time-Series
 ---
 
 paper: <https://arxiv.org/pdf/1901.10946.pdf>
@@ -14,7 +14,7 @@ code: <https://github.com/felixykliu/NAOMI>
 
 길이가 긴 결측치를 보간하는 데에 특화된 모델
 
-divide & conquer를 사용하여 긴 길이의 결측치를 나눠서 보간하는 것이 특징.
+divide & conquer를 사용하여 **긴 길이**의 결측치를 나눠서 보간하는 것이 특징.
 
 &nbsp;
 
@@ -22,11 +22,11 @@ divide & conquer를 사용하여 긴 길이의 결측치를 나눠서 보간하�
 
 ## Abstract
 
-결측치 대체는 모션 트래킹 부터 물리적 시스템의 동역학 까지 시공간적인 모델링에서 기본적인 문제이다.  Deep autoregressive model (ex. ARIMA) 은 긴 범위의 시퀀스를 imputing할 경우 심각한 오류 전파를 겪는다. 이 논문에서는 non-autoregressive 접근과 새로운 deep 생성 모델을 제안한다: Non-AutOregressive Multiresolution Imputation (NAOMI) , 긴 범위의 시퀀스의 임의의 결측 패턴을 대체한다.
+결측치 대체는 모션 트래킹 부터 물리적 시스템의 동역학 까지 시공간적인 모델링에서 기본적인 문제이다.  Deep autoregressive model 은 긴 범위의 시퀀스를 imputing할 경우 심각한 오류 전파를 겪는다. 이 논문에서는 non-autoregressive 접근과 새로운 deep 생성 모델을 제안한다: Non-AutOregressive Multiresolution Imputation (NAOMI) , 긴 범위의 시퀀스의 임의의 결측 패턴을 대체한다.
 
 NAOMI 는 시공간 데이터의 multiresolution 구조를 이용하고, divide-and-conquer 방법을 사용해서 거친 해상도에서 미세한 해상도 까지 재귀적으로 decode한다.
 
-우리는 adversarial training을 사용하여 우리의 모델을 더욱 발전시켰다. 결정론적 및 확률적인 시스템에서 평가할 때 우리의 실험에서 NAOMI는 imputation 정확도를 크게 증가시켰고, 긴 범위의 시퀀스에 대해서도 일반화했다.
+우리는 adversarial training을 사용하여 우리의 모델을 더욱 발전시켰다. 결정론적 및 확률적인 시스템에서 평가할 때 우리의 실험에서 NAOMI는 imputation 정확도를 크게 증가시켰고, **긴 범위의 시퀀스에 대해서도 일반화했다**.
 
 &nbsp;
 
@@ -39,7 +39,7 @@ NAOMI 는 시공간 데이터의 multiresolution 구조를 이용하고, divide-
 
 최근의 연구들은 시퀀스 데이터에서 결측 패턴을 유연하게 학습하기 위해 깊은 생성 모델을 사용해서 제안 되었다. 그러나 존재하는 모든 deep generative imputaion 방법들은 autoregressive이다. 이전 타임 스텝의 값을 이용해서 현재의 타임 스탬프값을 모델링하고 결측 데이터를 순차적으로 impute한다. 그런 이유로 autoregressive 모델들은 복합 에러에 매우 민감하고 긴 범위의 시퀀스 모델링에 치명적일 수 있다. 우리는 우리의 실험에서 기존의 autoregressive 접근방법이 긴 범위의 imputation 작업에서 어려움을 격는 것을 확인했다.
 
-이 논문에서, 우리는 긴 범위의 시퀀스 imputation을 위한 새로운 non-autoregressive 접근을 소개한다. 오직 과거의 값들로 조절하는 것 대신, 우리는 과거의 미래 모두의 조건의 분포를 모델링 한다. 우리는 시공간적 시퀀스의 multiresolution 특징을 사용하고, 복잡한 의존성을  여러개의 resolution에서 더욱 간편하게 분해한다. 우리의 모델은 divide and conquer 전략을 사용하여 결측치를 재귀적으로 채운다. 우리의 방법은 일반적이고 다양한 학습 목적에 사용가능하다. 
+이 논문에서, 우리는 긴 범위의 시퀀스 imputation을 위한 새로운 non-autoregressive 접근을 소개한다. 오직 과거의 값들로 조절하는 것 대신, 우리는 **과거의 미래 모두의 조건의 분포를 모델링** 한다. 우리는 시공간적 시퀀스의 multiresolution 특징을 사용하고, 복잡한 의존성을  여러개의 resolution에서 더욱 간편하게 분해한다. 우리의 모델은 divide and conquer 전략을 사용하여 결측치를 재귀적으로 채운다. 우리의 방법은 일반적이고 다양한 학습 목적에 사용가능하다. 
 
 요약하면, 우리의 기여는 다음과 같다.
 

@@ -3,7 +3,7 @@ title: "[논문번역] Informer: Beyond Efficient Transformer for Long Sequence 
 toc: true
 toc_sticky: true
 date: 2021-07-06
-categories: Paper-Translate
+categories: 논문번역
 ---
 
 **(AAAI-21 Outstanding Paper Award)**
