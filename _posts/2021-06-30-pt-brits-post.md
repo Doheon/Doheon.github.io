@@ -12,7 +12,7 @@ paper: <https://arxiv.org/pdf/1805.10572.pdf>
 
 code: <https://github.com/caow13/BRITS>
 
-
+&nbsp;
 
 ### Abstract
 
@@ -24,7 +24,7 @@ code: <https://github.com/caow13/BRITS>
 2. 비선형 동역학 기반으로 시계열을 일반화한다.
 3. 데이터 기반의 imputation 과정을 제공하고, 결측 데이터가 있는 일반적인 상황에 적용가능하다.
 
-
+&nbsp;
 
 우리의 모델을 다음과 같은 세가지의 실제 데이터셋에서 평가해보았다. 
 
@@ -32,7 +32,7 @@ code: <https://github.com/caow13/BRITS>
 
 그 결과 우리의 모델은 imputation과 classification/regression에서 최신 방법을 능가하는 성능을 보여줬다.
 
-
+&nbsp;
 
 
 
@@ -55,6 +55,8 @@ code: <https://github.com/caow13/BRITS>
 - 우리는 하나의 뉴럴 그래프에서 결측치 imputation과 classification/regression 작업을 동시에 진행했다. 이렇게 하면 에러 전파 문제가 imputation에서 classification/regression으로 완화된다. 추가로, classification/regression의 라벨이 결측치를 더욱 정확하게 예측하게 한다.
 - 우리는 우리의 모델을 세가지의실제 데이터셋에서 평가해보았다. 실험 결과 우리의 모델은 imputation과 classification/regression 정확도에서 모두 state-of-the-art를 능가하는 성능을 가지고 있었다.
 
+&nbsp;
+
 
 
 ### Preliminary
@@ -64,6 +66,8 @@ x,m,delta에 대해 설명
 ![image-20210622104053818](/assets/images/2021-06-29-pt-brits-post.assets/image-20210622104053818.png)
 
 x는 데이터, m은 결측치인지 아닌지 여부, delta는 마지막 관측값에서의 시간
+
+&nbsp;
 
 
 
@@ -85,6 +89,8 @@ unidirectional recurrent dynamical system 에서 각 시계열 변수는 고정�
 
 t번째 step에서  만약 x_t가 실제로 관측 됐다면, 우리는 그것을 우리의 imputation을 검증하기 위해 사용하고 다음 반복 step으로 x_t를 전달한다. 그렇지 않다면 미래의 관측이 현재의 값과 관련되어 있기 때문에 x_t를 얻은 대체 값으로 대체하고, 미래의 관측값으로 검증한다.
 
+&nbsp;
+
 
 
 x1~x10까지의 값들 중 x5,x6,x7이 missing일 때의 예시이다.
@@ -101,13 +107,17 @@ x1~x10까지의 값들 중 x5,x6,x7이 missing일 때의 예시이다.
 
 그래서 8번째 step에서는 5,6,7의 지연된 에러를 얻는다.
 
-&nbsp;
+&nbsp;&nbsp;
+
+
 
 **algorithm**
 
 우리는 imputation을 위해 recurrent component와 regression component를 소개한다.
 
 recurrent component는 RNN에서 얻을 수 있고, regression component는 FC network에서 얻을 수 있다.
+
+&nbsp;
 
 
 
@@ -117,11 +127,15 @@ recurrent component는 RNN에서 얻을 수 있고, regression component는 FC n
 
 W,U,b는 파라미터, x는 input, h는 이전 단계의 hidden state이다.
 
+&nbsp;
+
 
 
 우리의 경우, x<sub>t</sub>가 결측값이라고 하면 x<sub>t</sub>의 값을 위의 식처럼 바로 사용할 수 없다.
 
 우리는 x<sub>t</sub>가 결측값일 때 우리의 알고리즘에 의해 구해지는 complement input 인 x<sub>t</sub><sup>c</sup>를 대신 사용했다.
+
+&nbsp;
 
 
 
@@ -149,6 +163,8 @@ W,U,b는 파라미터, x는 input, h는 이전 단계의 hidden state이다.
 
 ![image-20210622143735775](/assets/images/2021-06-29-pt-brits-post.assets/image-20210622143735775-1624340259036.png)
 
+&nbsp;
+
 f<sub>out</sub>는 특정한 작업에 의존하는 fc layer나 softmax layer가 될 수 있다. 알파는 hidden state마다 다른 attention 메커니즘이나 mean pooling 메커니즘에 의해 나오는 가중치 이다. (i.e. 알파 = 1/T)
 
 우리는 아웃풋 로스를 L(y,y')을 통해 구한다. 우리의 모델은 아래와 같은 로스를 최소화 시키면서 업데이트 된다.
@@ -159,7 +175,7 @@ f<sub>out</sub>는 특정한 작업에 의존하는 fc layer나 softmax layer가
 
 &nbsp;
 
-
+&nbsp;
 
 **Practical Issues**
 
@@ -233,13 +249,13 @@ W,b는 파라미터다
 
 우리는  W의 대각 행렬을 모두 0으로 제한했다. 그래서 z의 d번째 element는 x<sub>t</sub><sup>d</sup>의 추정치이다.
 
-
+&nbsp;
 
 우리는 추가로 historical-based estimation x와 feature-based estimation z를 아래와 같은 방법으로 c로 합쳤다.
 
 ![image-20210622164236884](/assets/images/2021-06-29-pt-brits-post.assets/image-20210622164236884.png)
 
-
+&nbsp;
 
 beta를 감마와 m을 고려하면서 학습하면 된다.
 
@@ -249,7 +265,7 @@ beta를 감마와 m을 고려하면서 학습하면 된다.
 
  ![image-20210622164603421](/assets/images/2021-06-29-pt-brits-post.assets/image-20210622164603421.png)
 
-
+&nbsp;
 
 
 
@@ -261,7 +277,7 @@ beta를 감마와 m을 고려하면서 학습하면 된다.
 
 최종적인 로스
 
-
+&nbsp;
 
 
 
@@ -275,7 +291,7 @@ beta를 감마와 m을 고려하면서 학습하면 된다.
 
 결측 구간이 길지 않다면 좋은 성능을 보이지만 결측구간이 길다면 다른 모델을 사용해야 한다.
 
-
+&nbsp;
 
 
 
