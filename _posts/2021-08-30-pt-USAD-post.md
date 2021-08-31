@@ -2,18 +2,17 @@
 title: "[논문번역] USAD: UnSupervised Anomaly Detection an Multivariate Time Series (KDD 2020)"
 toc: true
 toc_sticky: true
-date: 2021-08-31
+date: 2021-08-30
 categories: 논문번역
-
 ---
 
 시계열 데이터 이상치 탐지 모델
 
 &nbsp;
 
-paper: https://dl.acm.org/doi/pdf/10.1145/3394486.3403392
+paper: <https://dl.acm.org/doi/pdf/10.1145/3394486.3403392>
 
-code: https://github.com/manigalati/usad
+code: <https://github.com/manigalati/usad>
 
 &nbsp;
 
